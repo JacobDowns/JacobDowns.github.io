@@ -10,3 +10,5 @@ def cat
   puts 'I love cats'
 end
 {% endhighlight %}
+
+$ \nabla_\boldsymbol{x} J(\boldsymbol{x}) $
