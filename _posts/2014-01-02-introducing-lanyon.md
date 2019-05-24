@@ -11,4 +11,4 @@ def cat
 end
 {% endhighlight %}
 
-$ \nabla_\boldsymbol{x} J(\boldsymbol{x}) $
+\\( \nabla_\boldsymbol{x} J(\boldsymbol{x}) \\)
