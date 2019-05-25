@@ -8,7 +8,7 @@ title:               J. Z. Downs
 tagline:             'Computational Mathematician'
 description:         'A place for code projects, math, and visualizations.'
 url:                 https://jacobdowns.github.io/
-baseurl:             'https://jacobdowns.github.io/'
+baseurl:             ''
 paginate:            5
 
 # About/contact
