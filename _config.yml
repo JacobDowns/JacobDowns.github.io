@@ -4,13 +4,17 @@
 #permalink:           pretty
 permalink:            /:categories/:year/:month/:day/:title:output_ext
 
+
+
 # Setup
 title:               J. Z. Downs
 tagline:             'Computational Mathematician'
 description:         'A place for code projects, math, and visualizations.'
 url:                 https://jacobdowns.github.io/
 baseurl:             ''
+gems:                [jekyll-paginate]
 paginate:            5
+paginate_path:       "page:num"
 
 # About/contact
 author:
