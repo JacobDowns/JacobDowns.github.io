@@ -1,4 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>J. Z. Downs</title><link href="https://jacobdowns.github.io//atom.xml" rel="self"/><link href="https://jacobdowns.github.io//"/><updated>2019-05-31T15:06:13-06:00</updated><id>https://jacobdowns.github.io/</id><author><name>Jacob Downs</name><email>jacob.downs@umontana.edu</email></author><entry><title>Stuff</title><link href="https://jacobdowns.github.io//2019/05/31/example-post/"/><updated>2019-05-31T00:00:00-06:00</updated><id>https://jacobdowns.github.io//2019/05/31/example-post</id><content type="html">&lt;h1 id=&quot;nonlinear-transformation-of-a-gaussian&quot;&gt;Nonlinear Transformation of a Gaussian&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>J. Z. Downs</title>
+ <link href="http://localhost:4000/atom.xml" rel="self"/>
+ <link href="http://localhost:4000/"/>
+ <updated>2019-05-31T15:19:51-06:00</updated>
+ <id>http://localhost:4000</id>
+ <author>
+   <name>Jacob Downs</name>
+   <email>jacob.downs@umontana.edu</email>
+ </author>
+
+ 
+ <entry>
+   <title>Stuff</title>
+   <link href="http://localhost:4000/2019/05/31/example-post/"/>
+   <updated>2019-05-31T00:00:00-06:00</updated>
+   <id>http://localhost:4000/2019/05/31/example-post</id>
+   <content type="html">&lt;h1 id=&quot;nonlinear-transformation-of-a-gaussian&quot;&gt;Nonlinear Transformation of a Gaussian&lt;/h1&gt;
 
 &lt;p&gt;Suppose that $\pmb{x} \sim N(\pmb{x_0}, P_x)$ is a Gaussian random variable with mean $\pmb{x_0}$ and covariance matrix $P_x$. If $f : \mathbb{R}^n \to \mathbb{R}^m$ is a nonlinear function, we would like to approximate the statistics of the non-Gaussian random variable
 \begin{equation}
@@ -96,14 +115,30 @@ Integral estimate: 0.49999999901341236
 \end{equation}&lt;/p&gt;
 
 &lt;p&gt;Given the importance of the expected value integrals in filtering applications, considerable effort has gone into efficiently estimating Gaussian weighted integrals of the form shown in Equation \ref{eq:gwint}. For a simple 1D problem, a basic quadrature rule suffices. However, for high dimensional problems, the number of points in standard quadrature rules grows exponentially, and estimating expected value integrals soon becomes intractable. In the next section, we’ll show an example of an efficient method for computing Gaussian weighted integrals called the Unscented Transform.&lt;/p&gt;
-</content></entry><entry><title>Math and Stuff</title><link href="https://jacobdowns.github.io//2014/01/02/introducing-lanyon/"/><updated>2014-01-02T00:00:00-07:00</updated><id>https://jacobdowns.github.io//2014/01/02/introducing-lanyon</id><content type="html">&lt;p&gt;Hey, there’s gonna be math and code on here and stuff probably.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Math and Stuff</title>
+   <link href="http://localhost:4000/2014/01/02/introducing-lanyon/"/>
+   <updated>2014-01-02T00:00:00-07:00</updated>
+   <id>http://localhost:4000/2014/01/02/introducing-lanyon</id>
+   <content type="html">&lt;p&gt;Hey, there’s gonna be math and code on here and stuff probably.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;cat&lt;/span&gt;
   &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'I love cats'&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;\( \nabla_\boldsymbol{x} J(\boldsymbol{x}) \)&lt;/p&gt;
-</content></entry><entry><title>Example content</title><link href="https://jacobdowns.github.io//2014/01/01/example-content/"/><updated>2014-01-01T00:00:00-07:00</updated><id>https://jacobdowns.github.io//2014/01/01/example-content</id><content type="html">&lt;div class=&quot;message&quot;&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Example content</title>
+   <link href="http://localhost:4000/2014/01/01/example-content/"/>
+   <updated>2014-01-01T00:00:00-07:00</updated>
+   <id>http://localhost:4000/2014/01/01/example-content</id>
+   <content type="html">&lt;div class=&quot;message&quot;&gt;
   Howdy! This is an example blog post that shows several types of HTML content supported in this theme.
 &lt;/div&gt;
 
@@ -228,7 +263,15 @@ Integral estimate: 0.49999999901341236
 &lt;hr /&gt;
 
 &lt;p&gt;Want to see something else added? &lt;a href=&quot;https://github.com/poole/poole/issues/new&quot;&gt;Open an issue.&lt;/a&gt;&lt;/p&gt;
-</content></entry><entry><title>What's Jekyll?</title><link href="https://jacobdowns.github.io//2013/12/31/whats-jekyll/"/><updated>2013-12-31T00:00:00-07:00</updated><id>https://jacobdowns.github.io//2013/12/31/whats-jekyll</id><content type="html">&lt;p&gt;&lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; is a static site generator, an open-source tool for creating simple yet powerful websites of all shapes and sizes. From &lt;a href=&quot;https://github.com/mojombo/jekyll/blob/master/README.markdown&quot;&gt;the project’s readme&lt;/a&gt;:&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>What's Jekyll?</title>
+   <link href="http://localhost:4000/2013/12/31/whats-jekyll/"/>
+   <updated>2013-12-31T00:00:00-07:00</updated>
+   <id>http://localhost:4000/2013/12/31/whats-jekyll</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; is a static site generator, an open-source tool for creating simple yet powerful websites of all shapes and sizes. From &lt;a href=&quot;https://github.com/mojombo/jekyll/blob/master/README.markdown&quot;&gt;the project’s readme&lt;/a&gt;:&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Jekyll is a simple, blog aware, static site generator. It takes a template directory […] and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind GitHub Pages, which you can use to host your project’s page or blog right here from GitHub.&lt;/p&gt;
@@ -237,4 +280,8 @@ Integral estimate: 0.49999999901341236
 &lt;p&gt;It’s an immensely useful tool and one we encourage you to use here with Lanyon.&lt;/p&gt;
 
 &lt;p&gt;Find out more by &lt;a href=&quot;https://github.com/mojombo/jekyll&quot;&gt;visiting the project on GitHub&lt;/a&gt;.&lt;/p&gt;
-</content></entry></feed>
+</content>
+ </entry>
+ 
+
+</feed>

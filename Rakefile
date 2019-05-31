@@ -37,19 +37,11 @@ task :minify do
   puts "Total compression %0.2f\%" % (((original-compressed)/original)*100)
 end
 
-desc "Recompile Sass"
-task :recompile_sass do
-  puts "\n## Forcing Sass to recompile"
-  status = system("touch -m assets/scss/styles.scss")
-  puts status ? "Success" : "Failed"
-end
-
 namespace :build do
   desc "Build _site/ for development"
-  task :dev => :recompile_sass do
-    puts "\n##  Starting Sass and Jekyll"
+  task :dev do
+    puts "\n##  Starting Jekyll"
     pids = [
-      spawn("sass --watch assets/scss/styles.scss:assets/css/styles.css --sourcemap=none"),
       spawn("jekyll serve -w")
     ]
 
@@ -64,10 +56,7 @@ namespace :build do
   end
 
   desc "Build _site/ for production"
-  task :pro => :recompile_sass do
-    puts "\n## Compiling Sass"
-    status = system("sass --style compressed assets/scss/styles.scss:assets/css/styles.css --sourcemap=none")
-    puts status ? "Success" : "Failed"
+  task :pro do
     puts "\n## Building Jekyll to _site/"
     status = system("jekyll build")
     puts status ? "Success" : "Failed"
