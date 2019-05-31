@@ -14,7 +14,7 @@ There are many practical applications of this problem, particularly in Gaussian 
 \[
 P(\pmb{y}) = 
 \begin{cases} 
-      |J(\pmb{y})| N(f^{-1}(\pmb{y}) | \pmb{x_0}, P_x) & \text{ if } \pmb{y} = f(\pmb{x}) \text{ for some } \pmb{x} \\
+      |J(\pmb{y})| N(f^{-1}(\pmb{y}) | \pmb{x_0}, P_x) & \text{ if } \pmb{y} = f(\pmb{x}) \text{ for some } \pmb{x} \\\\\\
       0 & \text{otherwise} 
 \end{cases}
 \]
