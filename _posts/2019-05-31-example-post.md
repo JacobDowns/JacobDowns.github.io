@@ -11,13 +11,13 @@ Suppose that $\pmb{x} \sim N(\pmb{x_0}, P_x)$ is a Gaussian random variable with
 \pmb{y} = f(\pmb{x}) 
 \end{equation}
 There are many practical applications of this problem, particularly in Gaussian filters such as the unscented Kalman problem. Formally, the probability density of the random variable $\pmb{y}$ is given by 
-\[
+\begin{equation}
 P(\pmb{y}) = 
 \begin{cases} 
       |J(\pmb{y})| N(f^{-1}(\pmb{y}) | \pmb{x_0}, P_x) & \text{ if } \pmb{y} = f(\pmb{x}) \text{ for some } \pmb{x} \\\\\\
       0 & \text{otherwise} 
 \end{cases}
-\]
+\end{equation}
 where $|J(\pmb{y})|$ is the determinant of the Jacobian of $f^{-1}$. Technically this applies for strictly monotone differentiable functions $f$ \cite{Sarkka2013}. 
 
 Below, we show a simple example of computing the PDF of a transformed Gaussian random variable analytically and via random sampling. In particular, we let $x \sim N(0, 1)$ and $f$ be the logistic function 
@@ -67,7 +67,7 @@ plt.show()
 ```
 
 
-![png](gaussian_transformation_files/gaussian_transformation_1_0.png)
+![png]({{ "/assets/images/gaussian_transformation_files/gaussian_transformation_1_0.png" }})
 
 
 ## Expected Value Integrals
