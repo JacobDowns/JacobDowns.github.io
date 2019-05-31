@@ -60,7 +60,7 @@ namespace :build do
     puts "\n## Building Jekyll to _site/"
     status = system("jekyll build")
     puts status ? "Success" : "Failed"
-    Rake::Task["minify"].invoke
+    #Rake::Task["minify"].invoke
   end
 end
 
@@ -90,10 +90,10 @@ task :deploy do
   status = system("git filter-branch --subdirectory-filter _site/ -f")
   puts status ? "Success" : "Failed"
   puts "\n## Switching back to source branch"
-  status = system("git checkout source")
+  status = system("git checkout gh-pages")
   puts status ? "Success" : "Failed"
   puts "\n## Pushing all branches to origin"
-  status = system("git push --all origin")
+  status = system("git push -f --all origin")
   puts status ? "Success" : "Failed"
 end
 

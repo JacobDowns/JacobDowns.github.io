@@ -2,12 +2,14 @@
 #
 # Use of `relative_permalinks` ensures post links from the index work properly.
 permalink:           pretty
+relative permalinks: true
+plugins: [jekyll-paginate]
 
 # Setup
 title:               J. Z. Downs
 tagline:             'Computational Mathematician'
 description:         'A place for code projects, math, and visualizations.'
-url:                 https://jacobdowns.github.io/
+url:                 https://jacobdowns.github.io/'
 baseurl:             ''
 paginate:            5
 

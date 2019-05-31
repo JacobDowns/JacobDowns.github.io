@@ -109,6 +109,293 @@
       <div class="container content">
         <div class="posts">
   
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2019/05/31/example-post/">
+        Stuff
+      </a>
+    </h1>
+
+    <span class="post-date">31 May 2019</span>
+
+    <h1 id="nonlinear-transformation-of-a-gaussian">Nonlinear Transformation of a Gaussian</h1>
+
+<p>Suppose that $\pmb{x} \sim N(\pmb{x_0}, P_x)$ is a Gaussian random variable with mean $\pmb{x_0}$ and covariance matrix $P_x$. If $f : \mathbb{R}^n \to \mathbb{R}^m$ is a nonlinear function, we would like to approximate the statistics of the non-Gaussian random variable
+\begin{equation}
+\pmb{y} = f(\pmb{x}) 
+\end{equation}
+There are many practical applications of this problem, particularly in Gaussian filters such as the unscented Kalman problem. Formally, the probability density of the random variable $\pmb{y}$ is given by 
+\begin{equation}
+P(\pmb{y}) = 
+\begin{cases} 
+      |J(\pmb{y})| N(f^{-1}(\pmb{y}) | \pmb{x_0}, P_x) &amp; \text{ if } \pmb{y} = f(\pmb{x}) \text{ for some } \pmb{x} \\<br />
+      0 &amp; \text{otherwise} 
+\end{cases}
+\end{equation}
+where $|J(\pmb{y})|$ is the determinant of the Jacobian of $f^{-1}$. Technically this applies for strictly monotone differentiable functions $f$ \cite{Sarkka2013}.</p>
+
+<p>Below, we show a simple example of computing the PDF of a transformed Gaussian random variable analytically and via random sampling. In particular, we let $x \sim N(0, 1)$ and $f$ be the logistic function 
+\begin{equation}
+y = \mathcal{F}(x) = \frac{1}{1 + e^{-x}}.
+\end{equation}</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">plot.basic_plot</span>
+
+<span class="c1"># Plot the probability distribution for y = f(x) 
+# where f(x) is the logistic function and x ~ N(0,1)
+</span>
+<span class="c1"># Probability density of x
+</span><span class="k">def</span> <span class="nf">Px</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">)</span>
+
+<span class="c1"># Nonlinear function
+</span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">1.</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c1"># Inverse of nonlinear function
+</span><span class="k">def</span> <span class="nf">f_inv</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">-</span> <span class="n">x</span><span class="p">))</span>
+
+<span class="c1"># Probability density of y
+</span><span class="k">def</span> <span class="nf">Py</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="c1"># Determinant of Jacobian of F^{-1}(y) 
+</span>    <span class="n">Jy</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">/</span> <span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">-</span> <span class="n">y</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">Jy</span><span class="o">*</span><span class="n">Px</span><span class="p">(</span><span class="n">f_inv</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+
+<span class="c1"># Randomly sample from the distribution and plot a histogram 
+</span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">7500</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">density</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+<span class="c1"># Plot the distribution computed analytically
+</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1e-16</span><span class="p">,</span> <span class="mf">1.0</span><span class="o">-</span><span class="mf">1e-16</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Py</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'y'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'P(y)'</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+</code></pre></div></div>
+
+<p><img src="/assets/images/gaussian_transformation_files/gaussian_transformation_1_0.png" alt="png" /></p>
+
+<h2 id="expected-value-integrals">Expected Value Integrals</h2>
+
+<p>Using the definition above is cumbersome and rarely practical for complicated nonlinear transformations. Typically, we are more interested in computing certain statistics of the random variable $\pmb{y}$, such as its mean and covariance. Enter the law of the unconscious statistician.</p>
+
+<p>As before, suppose that $\pmb{x}$ is a Gaussian random variable. We can compute the expected value or mean of $\pmb{y} = f(\pmb{x})$ denoted $E[\pmb{y}]$ without explicitly knowing its associated probability density function as follows</p>
+
+<p>\begin{equation}
+\label{eq:gwint}
+E[\pmb{y}] = \int_{\mathbb{R}^n} f(\pmb{x}) N(\pmb{x} | \pmb{x_0}, P_x) d \pmb{x}.
+\end{equation}</p>
+
+<p>That is, $E[\pmb{y}]$ can be computed as a Gaussian weighted integral. Let’s return to our logistic function example $y = f(x) = \frac{1}{1 + e^{-x}}$ and compute the expected value of $y$ using random sampling and numerical integration using the law of the unconscious statistician.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">quad</span>
+
+<span class="c1"># Estimate expected value of y by random sampling
+</span><span class="n">y_mean1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Estimate expected value of y using the result above 
+# and numerical quadrature 
+</span><span class="n">y_mean2</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">Px</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="o">-</span><span class="mf">6.</span><span class="p">,</span> <span class="mf">6.</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Random sampling estimate: {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">y_mean1</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Integral estimate: {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">y_mean2</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Random sampling estimate: 0.5014504701239816
+Integral estimate: 0.49999999901341236
+</code></pre></div></div>
+
+<p>Covariance is also defined in terms of expected values integrals, and can therefore be approximated using similar weighted integrals. We will discuss covariance of a transformed random variable in more detail later. 
+\begin{equation}
+\text{Cov}[\pmb{y}] = E[(f(\pmb{x}) - E[f(\pmb{x})])(f(\pmb{x}) - E[f(\pmb{x})])^T]
+\end{equation}</p>
+
+<p>Given the importance of the expected value integrals in filtering applications, considerable effort has gone into efficiently estimating Gaussian weighted integrals of the form shown in Equation \ref{eq:gwint}. For a simple 1D problem, a basic quadrature rule suffices. However, for high dimensional problems, the number of points in standard quadrature rules grows exponentially, and estimating expected value integrals soon becomes intractable. In the next section, we’ll show an example of an efficient method for computing Gaussian weighted integrals called the Unscented Transform.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2014/01/02/introducing-lanyon/">
+        Math and Stuff
+      </a>
+    </h1>
+
+    <span class="post-date">02 Jan 2014</span>
+
+    <p>Hey, there’s gonna be math and code on here and stuff probably.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">cat</span>
+  <span class="nb">puts</span> <span class="s1">'I love cats'</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>\( \nabla_\boldsymbol{x} J(\boldsymbol{x}) \)</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2014/01/01/example-content/">
+        Example content
+      </a>
+    </h1>
+
+    <span class="post-date">01 Jan 2014</span>
+
+    <div class="message">
+  Howdy! This is an example blog post that shows several types of HTML content supported in this theme.
+</div>
+
+<p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. <em>Aenean eu leo quam.</em> Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
+
+<blockquote>
+  <p>Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+</blockquote>
+
+<p>Etiam porta <strong>sem malesuada magna</strong> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+
+<h2 id="inline-html-elements">Inline HTML elements</h2>
+
+<p>HTML defines a long list of available inline tags, a complete list of which can be found on the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">Mozilla Developer Network</a>.</p>
+
+<ul>
+  <li><strong>To bold text</strong>, use <code class="highlighter-rouge">&lt;strong&gt;</code>.</li>
+  <li><em>To italicize text</em>, use <code class="highlighter-rouge">&lt;em&gt;</code>.</li>
+  <li>Abbreviations, like <abbr title="HyperText Markup Langage">HTML</abbr> should use <code class="highlighter-rouge">&lt;abbr&gt;</code>, with an optional <code class="highlighter-rouge">title</code> attribute for the full phrase.</li>
+  <li>Citations, like <cite>— Mark otto</cite>, should use <code class="highlighter-rouge">&lt;cite&gt;</code>.</li>
+  <li><del>Deleted</del> text should use <code class="highlighter-rouge">&lt;del&gt;</code> and <ins>inserted</ins> text should use <code class="highlighter-rouge">&lt;ins&gt;</code>.</li>
+  <li>Superscript <sup>text</sup> uses <code class="highlighter-rouge">&lt;sup&gt;</code> and subscript <sub>text</sub> uses <code class="highlighter-rouge">&lt;sub&gt;</code>.</li>
+</ul>
+
+<p>Most of these elements are styled by browsers with few modifications on our part.</p>
+
+<h2 id="heading">Heading</h2>
+
+<p>Vivamus sagittis lacus vel augue rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+
+<h3 id="code">Code</h3>
+
+<p>Cum sociis natoque penatibus et magnis dis <code class="highlighter-rouge">code element</code> montes, nascetur ridiculus mus.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Example can be run directly in your JavaScript console
+</span>
+
+<span class="c1">// Create a function that takes two arguments and returns the sum of those arguments
+</span>
+<span class="kd">var</span> <span class="nx">adder</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"return a + b"</span><span class="p">);</span>
+
+<span class="c1">// Call the function
+</span>
+<span class="nx">adder</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+<span class="c1">// &gt; 8</span></code></pre></figure>
+
+<p>Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+
+<h3 id="lists">Lists</h3>
+
+<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+
+<ul>
+  <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
+  <li>Donec id elit non mi porta gravida at eget metus.</li>
+  <li>Nulla vitae elit libero, a pharetra augue.</li>
+</ul>
+
+<p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
+
+<ol>
+  <li>Vestibulum id ligula porta felis euismod semper.</li>
+  <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
+  <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
+</ol>
+
+<p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
+
+<dl>
+  <dt>HyperText Markup Language (HTML)</dt>
+  <dd>The language used to describe and define the content of a Web page</dd>
+
+  <dt>Cascading Style Sheets (CSS)</dt>
+  <dd>Used to describe the appearance of Web content</dd>
+
+  <dt>JavaScript (JS)</dt>
+  <dd>The programming language used to build advanced Web sites and applications</dd>
+</dl>
+
+<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+
+<h3 id="tables">Tables</h3>
+
+<p>Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Upvotes</th>
+      <th>Downvotes</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <td>Totals</td>
+      <td>21</td>
+      <td>23</td>
+    </tr>
+  </tfoot>
+  <tbody>
+    <tr>
+      <td>Alice</td>
+      <td>10</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>Bob</td>
+      <td>4</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>Charlie</td>
+      <td>7</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+
+<hr />
+
+<p>Want to see something else added? <a href="https://github.com/poole/poole/issues/new">Open an issue.</a></p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2013/12/31/whats-jekyll/">
+        What's Jekyll?
+      </a>
+    </h1>
+
+    <span class="post-date">31 Dec 2013</span>
+
+    <p><a href="http://jekyllrb.com">Jekyll</a> is a static site generator, an open-source tool for creating simple yet powerful websites of all shapes and sizes. From <a href="https://github.com/mojombo/jekyll/blob/master/README.markdown">the project’s readme</a>:</p>
+
+<blockquote>
+  <p>Jekyll is a simple, blog aware, static site generator. It takes a template directory […] and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind GitHub Pages, which you can use to host your project’s page or blog right here from GitHub.</p>
+</blockquote>
+
+<p>It’s an immensely useful tool and one we encourage you to use here with Lanyon.</p>
+
+<p>Find out more by <a href="https://github.com/mojombo/jekyll">visiting the project on GitHub</a>.</p>
+
+  </div>
+  
 </div>
 
 <div class="pagination">
