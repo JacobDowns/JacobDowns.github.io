@@ -112,15 +112,13 @@
   <div class="post">
     <h1 class="post-title">
       <a href="/2019/05/31/example-post/">
-        Stuff
+        Nonlinear Transformation of a Gaussian
       </a>
     </h1>
 
     <span class="post-date">31 May 2019</span>
 
-    <h1 id="nonlinear-transformation-of-a-gaussian">Nonlinear Transformation of a Gaussian</h1>
-
-<p>Suppose that $\pmb{x} \sim N(\pmb{x_0}, P_x)$ is a Gaussian random variable with mean $\pmb{x_0}$ and covariance matrix $P_x$. If $f : \mathbb{R}^n \to \mathbb{R}^m$ is a nonlinear function, we would like to approximate the statistics of the non-Gaussian random variable
+    <p>Suppose that $\pmb{x} \sim N(\pmb{x_0}, P_x)$ is a Gaussian random variable with mean $\pmb{x_0}$ and covariance matrix $P_x$. If $f : \mathbb{R}^n \to \mathbb{R}^m$ is a nonlinear function, we would like to approximate the statistics of the non-Gaussian random variable
 \begin{equation}
 \pmb{y} = f(\pmb{x}) 
 \end{equation}
@@ -132,7 +130,7 @@ P(\pmb{y}) =
       0 &amp; \text{otherwise} 
 \end{cases}
 \end{equation}
-where $|J(\pmb{y})|$ is the determinant of the Jacobian of $f^{-1}$. Technically this applies for strictly monotone differentiable functions $f$ \cite{Sarkka2013}.</p>
+where $|J(\pmb{y})|$ is the determinant of the Jacobian of $f^{-1}$. Technically this applies for strictly monotone differentiable functions $f$ <a class="citation" href="#Sarkka2013">(Sarkka, 2013)</a>.</p>
 
 <p>Below, we show a simple example of computing the PDF of a transformed Gaussian random variable analytically and via random sampling. In particular, we let $x \sim N(0, 1)$ and $f$ be the logistic function 
 \begin{equation}
@@ -210,12 +208,14 @@ E[\pmb{y}] = \int_{\mathbb{R}^n} f(\pmb{x}) N(\pmb{x} | \pmb{x_0}, P_x) d \pmb{x
 Integral estimate: 0.49999999901341236
 </code></pre></div></div>
 
-<p>Covariance is also defined in terms of expected values integrals, and can therefore be approximated using similar weighted integrals. We will discuss covariance of a transformed random variable in more detail later. 
+<p>Covariance is also defined in terms of expected value integrals, and can therefore be approximated using similar weighted integrals. We will discuss estimating covariance of a transformed random variable in more detail later. 
 \begin{equation}
 \text{Cov}[\pmb{y}] = E[(f(\pmb{x}) - E[f(\pmb{x})])(f(\pmb{x}) - E[f(\pmb{x})])^T]
 \end{equation}</p>
 
 <p>Given the importance of the expected value integrals in filtering applications, considerable effort has gone into efficiently estimating Gaussian weighted integrals of the form shown in Equation \ref{eq:gwint}. For a simple 1D problem, a basic quadrature rule suffices. However, for high dimensional problems, the number of points in standard quadrature rules grows exponentially, and estimating expected value integrals soon becomes intractable. In the next section, we’ll show an example of an efficient method for computing Gaussian weighted integrals called the Unscented Transform.</p>
+
+<ol class="bibliography"><li><span id="Sarkka2013">Sarkka, S. (2013). Bayesian Filtering and Smoothing. <i>Cambridge University Press</i>. https://doi.org/10.1017/CBO9781139344203</span></li></ol>
 
   </div>
   

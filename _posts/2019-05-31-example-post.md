@@ -1,10 +1,7 @@
 ---
 layout: post
-title:  "Stuff"
+title:  "Nonlinear Transformation of a Gaussian"
 ---
-
-
-# Nonlinear Transformation of a Gaussian
 
 Suppose that $\pmb{x} \sim N(\pmb{x_0}, P_x)$ is a Gaussian random variable with mean $\pmb{x_0}$ and covariance matrix $P_x$. If $f : \mathbb{R}^n \to \mathbb{R}^m$ is a nonlinear function, we would like to approximate the statistics of the non-Gaussian random variable
 \begin{equation}
@@ -18,7 +15,7 @@ P(\pmb{y}) =
       0 & \text{otherwise} 
 \end{cases}
 \end{equation}
-where $|J(\pmb{y})|$ is the determinant of the Jacobian of $f^{-1}$. Technically this applies for strictly monotone differentiable functions $f$ \cite{Sarkka2013}. 
+where $|J(\pmb{y})|$ is the determinant of the Jacobian of $f^{-1}$. Technically this applies for strictly monotone differentiable functions $f$ {% cite Sarkka2013 %}. 
 
 Below, we show a simple example of computing the PDF of a transformed Gaussian random variable analytically and via random sampling. In particular, we let $x \sim N(0, 1)$ and $f$ be the logistic function 
 \begin{equation}
@@ -102,10 +99,12 @@ print("Integral estimate: {}".format(y_mean2))
     Integral estimate: 0.49999999901341236
 
 
-Covariance is also defined in terms of expected values integrals, and can therefore be approximated using similar weighted integrals. We will discuss covariance of a transformed random variable in more detail later. 
+Covariance is also defined in terms of expected value integrals, and can therefore be approximated using similar weighted integrals. We will discuss estimating covariance of a transformed random variable in more detail later. 
 \begin{equation}
 \text{Cov}[\pmb{y}] = E[(f(\pmb{x}) - E[f(\pmb{x})])(f(\pmb{x}) - E[f(\pmb{x})])^T]
 \end{equation}
 
 
-Given the importance of the expected value integrals in filtering applications, considerable effort has gone into efficiently estimating Gaussian weighted integrals of the form shown in Equation \ref{eq:gwint}. For a simple 1D problem, a basic quadrature rule suffices. However, for high dimensional problems, the number of points in standard quadrature rules grows exponentially, and estimating expected value integrals soon becomes intractable. In the next section, we'll show an example of an efficient method for computing Gaussian weighted integrals called the Unscented Transform. 
+Given the importance of the expected value integrals in filtering applications, considerable effort has gone into efficiently estimating Gaussian weighted integrals of the form shown in Equation \ref{eq:gwint}. For a simple 1D problem, a basic quadrature rule suffices. However, for high dimensional problems, the number of points in standard quadrature rules grows exponentially, and estimating expected value integrals soon becomes intractable. In the next section, we'll show an example of an efficient method for computing Gaussian weighted integrals called the Unscented Transform.
+
+{% bibliography --cited %}
