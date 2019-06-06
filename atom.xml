@@ -4,7 +4,7 @@
  <title>J. Z. Downs</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2019-05-31T16:33:31-06:00</updated>
+ <updated>2019-06-03T14:09:56-06:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Jacob Downs</name>
@@ -13,13 +13,11 @@
 
  
  <entry>
-   <title>Stuff</title>
+   <title>Nonlinear Transformation of a Gaussian</title>
    <link href="http://localhost:4000/2019/05/31/example-post/"/>
    <updated>2019-05-31T00:00:00-06:00</updated>
    <id>http://localhost:4000/2019/05/31/example-post</id>
-   <content type="html">&lt;h1 id=&quot;nonlinear-transformation-of-a-gaussian&quot;&gt;Nonlinear Transformation of a Gaussian&lt;/h1&gt;
-
-&lt;p&gt;Suppose that $\pmb{x} \sim N(\pmb{x_0}, P_x)$ is a Gaussian random variable with mean $\pmb{x_0}$ and covariance matrix $P_x$. If $f : \mathbb{R}^n \to \mathbb{R}^m$ is a nonlinear function, we would like to approximate the statistics of the non-Gaussian random variable
+   <content type="html">&lt;p&gt;Suppose that $\pmb{x} \sim N(\pmb{x_0}, P_x)$ is a Gaussian random variable with mean $\pmb{x_0}$ and covariance matrix $P_x$. If $f : \mathbb{R}^n \to \mathbb{R}^m$ is a nonlinear function, we would like to approximate the statistics of the non-Gaussian random variable
 \begin{equation}
 \pmb{y} = f(\pmb{x}) 
 \end{equation}
@@ -31,7 +29,7 @@ P(\pmb{y}) =
       0 &amp;amp; \text{otherwise} 
 \end{cases}
 \end{equation}
-where $|J(\pmb{y})|$ is the determinant of the Jacobian of $f^{-1}$. Technically this applies for strictly monotone differentiable functions $f$ \cite{Sarkka2013}.&lt;/p&gt;
+where $|J(\pmb{y})|$ is the determinant of the Jacobian of $f^{-1}$. Technically this applies for strictly monotone differentiable functions $f$ &lt;a class=&quot;citation&quot; href=&quot;#Sarkka2013&quot;&gt;(Sarkka, 2013)&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Below, we show a simple example of computing the PDF of a transformed Gaussian random variable analytically and via random sampling. In particular, we let $x \sim N(0, 1)$ and $f$ be the logistic function 
 \begin{equation}
@@ -109,12 +107,14 @@ E[\pmb{y}] = \int_{\mathbb{R}^n} f(\pmb{x}) N(\pmb{x} | \pmb{x_0}, P_x) d \pmb{x
 Integral estimate: 0.49999999901341236
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Covariance is also defined in terms of expected values integrals, and can therefore be approximated using similar weighted integrals. We will discuss covariance of a transformed random variable in more detail later. 
+&lt;p&gt;Covariance is also defined in terms of expected value integrals, and can therefore be approximated using similar weighted integrals. We will discuss estimating covariance of a transformed random variable in more detail later. 
 \begin{equation}
 \text{Cov}[\pmb{y}] = E[(f(\pmb{x}) - E[f(\pmb{x})])(f(\pmb{x}) - E[f(\pmb{x})])^T]
 \end{equation}&lt;/p&gt;
 
 &lt;p&gt;Given the importance of the expected value integrals in filtering applications, considerable effort has gone into efficiently estimating Gaussian weighted integrals of the form shown in Equation \ref{eq:gwint}. For a simple 1D problem, a basic quadrature rule suffices. However, for high dimensional problems, the number of points in standard quadrature rules grows exponentially, and estimating expected value integrals soon becomes intractable. In the next section, we’ll show an example of an efficient method for computing Gaussian weighted integrals called the Unscented Transform.&lt;/p&gt;
+
+&lt;ol class=&quot;bibliography&quot;&gt;&lt;li&gt;&lt;span id=&quot;Sarkka2013&quot;&gt;Sarkka, S. (2013). Bayesian Filtering and Smoothing. &lt;i&gt;Cambridge University Press&lt;/i&gt;. https://doi.org/10.1017/CBO9781139344203&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 </content>
  </entry>
  
