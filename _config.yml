@@ -7,11 +7,11 @@ plugins: [jekyll-paginate, 'jekyll/scholar']
 
 # Setup
 title:               J. Z. Downs
-tagline:             'Computational Mathematician'
-description:         'A place for code projects, math, and visualizations.'
+tagline:             'Sums and summits'
+description:         'A place code, math, and visualizations.'
 url:                 https://jacobdowns.github.io/'
 baseurl:             ''
-paginate:            5
+paginate:            1
 
 # About/contact
 author:
