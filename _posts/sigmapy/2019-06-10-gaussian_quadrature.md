@@ -137,7 +137,7 @@ In this case, both the Gauss-Hermite method and the UT exactly (to machine preci
 
 What about higher order polynomials or non-polynomial functions? A drawback of using a fixed number of sigma points versus taking random samples via MCMC methods is that the order of accuracy is necessarily fixed. For some nonlinear functions, the unscented approximation will be highly accurate (or even perfect), but for others, higher order polynomial terms in the Taylor series expansion for $f$ will result in integration errors. In contrast, MCMC methods can compute expectation integrals to arbitrary precision given enough samples. 
 
-Generally, the unscented transform provides more accurate estimates than MCMC methods relative to the number of sigma points / samples respectively. Different quadrature rules and different selections of the scaling parameters for those rules will affect their performance for a given problem. Sigmapy includes algorithms for a variety [sets](/sigmapy/examples/sigma) with different numbers of sigma points and levels of accuracy. 
+Generally, the unscented transform provides more accurate estimates than MCMC methods relative to the number of sigma points / samples respectively. Different quadrature rules and different selections of the scaling parameters for those rules will affect their performance for a given problem. Sigmapy includes algorithms for generating a variety sigma point sets. 
 
 ## Bibliography
 

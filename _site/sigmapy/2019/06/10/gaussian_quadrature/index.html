@@ -80,24 +80,6 @@
     
       
     
-      
-        
-          <a class="sidebar-nav-item" href="/sigmapy/">Sigmapy</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/sigmapy/examples/gaussian_quadrature/">Gaussian Quadrature</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/sigmapy/examples/gaussian_transformation/">Nonlinear Transformation of a Gaussian</a>
-        
-      
-    
 
     <a class="sidebar-nav-item" href="/archive/v1.0.0.zip">Download</a>
     <a class="sidebar-nav-item" href="">GitHub project</a>
@@ -252,7 +234,7 @@ Expected value from UT: [1. 1. 0.]
 
 <p>What about higher order polynomials or non-polynomial functions? A drawback of using a fixed number of sigma points versus taking random samples via MCMC methods is that the order of accuracy is necessarily fixed. For some nonlinear functions, the unscented approximation will be highly accurate (or even perfect), but for others, higher order polynomial terms in the Taylor series expansion for $f$ will result in integration errors. In contrast, MCMC methods can compute expectation integrals to arbitrary precision given enough samples.</p>
 
-<p>Generally, the unscented transform provides more accurate estimates than MCMC methods relative to the number of sigma points / samples respectively. Different quadrature rules and different selections of the scaling parameters for those rules will affect their performance for a given problem. Sigmapy includes algorithms for a variety <a href="/sigmapy/examples/sigma">sets</a> with different numbers of sigma points and levels of accuracy.</p>
+<p>Generally, the unscented transform provides more accurate estimates than MCMC methods relative to the number of sigma points / samples respectively. Different quadrature rules and different selections of the scaling parameters for those rules will affect their performance for a given problem. Sigmapy includes algorithms for generating a variety sigma point sets.</p>
 
 <h2 id="bibliography">Bibliography</h2>
 
@@ -267,7 +249,7 @@ Expected value from UT: [1. 1. 0.]
       <li>
         <h3>
           <a href="/sigmapy/2019/06/10/sigma_point_sets/">
-            Siga Point Sets
+            Sigma Point Sets
             <small>10 Jun 2019</small>
           </a>
         </h3>
@@ -284,9 +266,9 @@ Expected value from UT: [1. 1. 0.]
     
       <li>
         <h3>
-          <a href="/sigmapy/2019/06/07/sigmapy/">
-            Sigmapy
-            <small>07 Jun 2019</small>
+          <a href="/sigmapy/2019/06/10/conditional_distributions/">
+            Conditional Distributions
+            <small>10 Jun 2019</small>
           </a>
         </h3>
       </li>

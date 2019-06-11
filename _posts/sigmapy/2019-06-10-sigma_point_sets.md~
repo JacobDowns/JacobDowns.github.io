@@ -61,8 +61,8 @@ A commonly used set of points and weights for the unscented transform is the Van
 \begin{equation}
 \pmb{\chi_i} =
 \begin{cases} 
-      \pmb{x_0} & i = 0 \\
-      \pmb{x_0} - \sqrt{n + \lambda} \pmb{e_i} & i = 1, \cdots, n\\
+      \pmb{x_0} & i = 0 \\\
+      \pmb{x_0} - \sqrt{n + \lambda} \pmb{e_i} & i = 1, \cdots, n\\\
       \pmb{x_0} + \sqrt{n + \lambda} \pmb{e_i} & i = n+1, \cdots, 2n
 \end{cases}
 \end{equation}
@@ -74,7 +74,7 @@ The notation $\pmb{e_i}$ refers to the $i$-th column of the $n \times n$ identit
 \begin{equation}
 w_i^m =
 \begin{cases} 
-      \frac{\lambda}{n + \lambda} & i = 0 \\
+      \frac{\lambda}{n + \lambda} & i = 0 \\\
       \frac{1}{2(n+\lambda)} & i = 1, \cdots, 2n
 \end{cases}
 \end{equation}
@@ -82,12 +82,12 @@ w_i^m =
 \begin{equation}
 w_i^c =
 \begin{cases} 
-      \frac{\lambda}{n + \lambda} + 1 - \alpha^2 + \beta & i = 0 \\
+      \frac{\lambda}{n + \lambda} + 1 - \alpha^2 + \beta & i = 0 \\\
       \frac{1}{2(n+\lambda)} & i = 1, \cdots, 2n
 \end{cases}
 \end{equation}
 
-Appropriate default choices of the scaling parameters are, $\beta = 2$, $\kappa = 3 - n$, and $0 \leq \alpha \leq 1$. Unless otherwise specified, these are the values used by TUT.
+Appropriate default choices of the scaling parameters are, $\beta = 2$, $\kappa = 3 - n$, and $0 \leq \alpha \leq 1$. Unless otherwise specified, these are the values used by Sigmapy.
 
 
 ```python
@@ -124,8 +124,8 @@ Another commonly used set of sigma points is the Julier set {% cite Julier1997 %
 \begin{equation}
 \pmb{\chi_i} =
 \begin{cases} 
-      \pmb{x_0} & i = 0 \\
-      \pmb{x_0} - \sqrt{n + \kappa} \pmb{e_i} & i = 1, \cdots, n\\
+      \pmb{x_0} & i = 0 \\\
+      \pmb{x_0} - \sqrt{n + \kappa} \pmb{e_i} & i = 1, \cdots, n\\\
       \pmb{x_0} + \sqrt{n + \kappa} \pmb{e_i} & i = n+1, \cdots, 2n
 \end{cases}
 \end{equation}
@@ -133,7 +133,7 @@ and weights are defined by
 \begin{equation}
 w_i^m = w_i^c =
 \begin{cases} 
-      \frac{\kappa}{n + \kappa} & i = 0 \\
+      \frac{\kappa}{n + \kappa} & i = 0 \\\
       \frac{1}{2(n+\kappa)} & i = 1, \cdots, 2n.
 \end{cases}
 \end{equation}
@@ -156,7 +156,7 @@ plt.show()
 
 ## Menegaz Sigma Points
 
-The Menegaz set uses a sparse $n+1$ sigma points {% cite Menegaz2011 %}. It has a single scaling parameter $0 < w_0 < 1$. Some additional notation is necessary to define the sigma point and weight sets. The notation $[c]_{p \times q}$ with $c \in \mathbb{R}$ represents a matrix of dimension $p \times q$ in which all terms are equal to $c$. The notation $\text{diag}(\pmb{x})$ for $\pmb{x} \in \mathbb{R}^n$ denotes an $n \times n$ matrix with $\pmb{x}$ on the diagonal. Using these definitions, we have:
+The Menegaz set uses a sparse $n+1$ sigma points {% cite Menegaz2011 %}. It has a single scaling parameter $0 < w_0 < 1$. Some additional notation is necessary to define the sigma point and weight sets. The notation $[c]\_{p \times q}$ with $c \in \mathbb{R}$ represents a matrix of dimension $p \times q$ in which all terms are equal to $c$. The notation $\text{diag}(\pmb{x})$ for $\pmb{x} \in \mathbb{R}^n$ denotes an $n \times n$ matrix with $\pmb{x}$ on the diagonal. Using these definitions, we have:
 \begin{equation}
 X = \left [ \pmb{\chi_0} \cdots \pmb{\chi_n} \right ] = \left [- \frac{[\alpha]_{n \times 1}}{w_0} \; \; C (\sqrt{W})^{-1} \right ] + \left [ \pmb{x_0} \cdots \pmb{x_0} \right ]
 \end{equation}
@@ -167,8 +167,8 @@ W = \text{diag}([w_1, \cdots, w_n])
 
 \begin{equation}
 \begin{bmatrix} 
-w_1 & \cdots & \sqrt{w_1}\sqrt{w_n} \\
-\vdots & \ddots & \vdots \\
+w_1 & \cdots & \sqrt{w_1}\sqrt{w_n} \\\
+\vdots & \ddots & \vdots \\\
 \sqrt{w_1} \sqrt{w_n} & \cdots & w_n 
 \end{bmatrix}
 = w_0 \alpha^2 C^{-1} [1]_{n \times n} (C^T)^{-1}
@@ -198,7 +198,7 @@ plt.show()
 ```
 
 
-![png](sigma_point_sets_files/sigma_point_sets_5_0.png)
+![png](/assets/images/sigma_point_sets_files/sigma_point_sets_5_0.png)
 
 
 ## Simplex Sigma Points
@@ -209,18 +209,18 @@ X_{n+1}^* = \left [ \pmb{\chi_0} \; \cdots \; \pmb{\chi_n} \right ]
 \end{equation}
 is generated recursively. We let 
 \begin{equation}
-\begin{gathered}
-X_1 = \left [-\frac{1}{2 \alpha} \; \frac{1}{2 \alpha} \right ] \\
-\alpha = \frac{n}{n+1}
-\end{gathered}
+X_1 = \left [-\frac{1}{2 \alpha} \; \frac{1}{2 \alpha} \right ]
 \end{equation}
-$X_i^*$ is generated from $X_{i-1}^*$ via
+\begin{equation}
+\alpha = \frac{n}{n+1}
+\end{equation}
+$X_i^*$ is generated from $X\_{i-1}^*$ via
 \begin{equation}
 X_i^* = 
 \begin{bmatrix} 
- & & & 0 \\
- & X_{i-1}^* & & \vdots \\
- & & & 0 \\
+ & & & 0 \\\
+ & X_{i-1}^* & & \vdots \\\
+ & & & 0 \\\
  \frac{1}{\sqrt{\alpha i (i + 1)}} &  \frac{1}{\sqrt{\alpha i (i + 1)}} &  \frac{1}{\sqrt{\alpha i (i + 1)}} &  \frac{-i}{\sqrt{\alpha i (i + 1)}}
 \end{bmatrix}.
 \end{equation}
@@ -240,18 +240,18 @@ plt.show()
 ```
 
 
-![png](sigma_point_sets_files/sigma_point_sets_7_0.png)
+![png](/assets/images/sigma_point_sets_files/sigma_point_sets_7_0.png)
 
 
 ## Li Sigma Points
 
-TUT includes a modified version of the fifth-order quadrature rule in {% cite Zhao-Ming2017 %} . It contains one scaling parameter $\lambda_2$. The quadrature rule is formulated in terms of fully symmetric sets of points. A set of points $S = \{\pmb{s_1}, \pmb{s_2}, \cdots, \pmb{s_N}\}$ is called fully symmetric if it is closed under the operations of coordinate position and sign permutations. The set $S$ is said to be generated by the vector $\pmb{s}$ if all points in $S$ can be obtained by coordinate position and sign permutations of $\pmb{s}$. 
+Sigmapy includes a modified version of the fifth-order quadrature rule in {% cite Zhao-Ming2017 %} . It contains one scaling parameter $\lambda_2$. The quadrature rule is formulated in terms of fully symmetric sets of points. A set of points $S = \{\pmb{s_1}, \pmb{s_2}, \cdots, \pmb{s_N}\}$ is called fully symmetric if it is closed under the operations of coordinate position and sign permutations. The set $S$ is said to be generated by the vector $\pmb{s}$ if all points in $S$ can be obtained by coordinate position and sign permutations of $\pmb{s}$. 
 
 Sigma points are categorized in terms of three fully symmetric sets
 \begin{equation}
 \begin{gathered}
-X_0 = [0]_n  \\
-X_1 = [\lambda_1]_n \\ 
+X_0 = [0]_n  \\\
+X_1 = [\lambda_1]_n \\\
 X_2 = [\lambda_2, \lambda_2]_n
 \end{gathered}
 \end{equation}
@@ -332,9 +332,9 @@ The third order Gauss-Hermite quadrature rule is a generalization of the 1D Gaus
 Weights and sigma points can be obtained using a tensor-products of the 1D Gauss-Hermite quadrature rule. The number of points grows exponentially with dimension, and the third order method requires a substantial $3^n$ points. An alternative formulation of the Gauss-Hermite sigma points involves categories of fully symmetric sets of sigma points {% cite Peng2017 %}. In particular, there are $n+1$ classes of sigma points
 \begin{equation}
 \begin{gathered}
-X_0 = \left [ 0 \right ]_n \\
-X_1 = \left [ \sqrt{3} \right ]_n \\ 
-X_2 = \left [ \sqrt{3}, \sqrt{3} \right ]_n \\
+X_0 = \left [ 0 \right ]_n \\\
+X_1 = \left [ \sqrt{3} \right ]_n \\\
+X_2 = \left [ \sqrt{3}, \sqrt{3} \right ]_n \\\
 \vdots \\
 X_n = \left [\sqrt{3}, \cdots, \sqrt{3} \right ]_n.
 \end{gathered}
@@ -342,10 +342,10 @@ X_n = \left [\sqrt{3}, \cdots, \sqrt{3} \right ]_n.
 Each sigma point in a given fully symmetric category has the same weight. Weights for each category are given by
 \begin{equation}
 \begin{gathered}
-w_0 = \left ( \frac{2}{3} \right )^n \\
-w_1 = \left ( \frac{2}{3} \right )^{n-1} \left ( \frac{1}{6} \right ) \\
-w_2 = \left ( \frac{2}{3} \right )^{n-2} \left ( \frac{1}{6} \right )^2 \\
-\vdots \\
+w_0 = \left ( \frac{2}{3} \right )^n \\\
+w_1 = \left ( \frac{2}{3} \right )^{n-1} \left ( \frac{1}{6} \right ) \\\
+w_2 = \left ( \frac{2}{3} \right )^{n-2} \left ( \frac{1}{6} \right )^2 \\\
+\vdots \\\
 w_n = \left ( \frac{1}{6} \right )^n.
 \end{gathered}
 \end{equation}
@@ -364,7 +364,7 @@ plt.show()
 ```
 
 
-![png](sigma_point_sets_files/sigma_point_sets_12_0.png)
+![png](/assets/images/sigma_point_sets_files/sigma_point_sets_12_0.png)
 
 
 ## Mysovskikh Sigma Points
@@ -375,8 +375,8 @@ Another fifth order sigma point set is the Mysovskikh set, which has $n^2 + 3n +
 \begin{equation}
 a_{i,j} = 
 \begin{cases} 
-      -\sqrt{ \frac{n+1}{n(n-j+2)(n-j+1)}} & i < j \\
-      \sqrt{\frac{(n+1)(n-i+1)}{n(n-i+2)}} & i = j \\
+      -\sqrt{ \frac{n+1}{n(n-j+2)(n-j+1)}} & i < j \\\
+      \sqrt{\frac{(n+1)(n-i+1)}{n(n-i+2)}} & i = j \\\
       0 & i > j
 \end{cases}.
 \end{equation}
@@ -388,8 +388,8 @@ The method is centrally symmetric. Hence, for every sigma point $\pmb{a_i}$ and 
 
 \begin{equation}
 \begin{gathered}
-w_0 = \frac{2}{n + 2} \\
-w_1 = \frac{n^2 (7 - n)}{2(n+1)^2 (n+2)^2} \\
+w_0 = \frac{2}{n + 2} \\\
+w_1 = \frac{n^2 (7 - n)}{2(n+1)^2 (n+2)^2} \\\
 w_2 = \frac{2(n-1)^2}{(n+1)^2 (n+2)^2}.
 \end{gathered}
 \end{equation}
