@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>J. Z. Downs</title>
- <link href="https://jacobdowns.github.io/'/atom.xml" rel="self"/>
- <link href="https://jacobdowns.github.io/'/"/>
- <updated>2019-06-11T14:43:27-06:00</updated>
- <id>https://jacobdowns.github.io/'</id>
+ <link href="http://localhost:4000/atom.xml" rel="self"/>
+ <link href="http://localhost:4000/"/>
+ <updated>2019-06-11T14:44:44-06:00</updated>
+ <id>http://localhost:4000</id>
  <author>
    <name>Jacob Downs</name>
    <email>jacob.downs@umontana.edu</email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Sigma Point Sets</title>
-   <link href="https://jacobdowns.github.io/'/sigmapy/2019/06/10/sigma_point_sets/"/>
+   <link href="http://localhost:4000/sigmapy/2019/06/10/sigma_point_sets/"/>
    <updated>2019-06-10T00:00:00-06:00</updated>
-   <id>https://jacobdowns.github.io/'/sigmapy/2019/06/10/sigma_point_sets</id>
+   <id>http://localhost:4000/sigmapy/2019/06/10/sigma_point_sets</id>
    <content type="html">&lt;p&gt;Here we outline algorithms for generating each sigma point set in Sigmapy for a standard Gaussian weighting function, $\mathcal{N}(\pmb{0}, I)$ in $n$ dimensions with mean $\pmb{0}$ and identity covariance. Sigma points are denoted $\chi_i$, mean weights $w_i^m$, and covariance weights $w_i^c$. General Gaussian weighting functions are $\mathcal{N}(\pmb{x_0}, P_x)$ are handled by transforming each sigma points $\chi_i$ according to 
 \begin{equation}
 \pmb{\chi_i}’ = \sqrt{P_x} \pmb{\chi_i} + \pmb{x_0}
@@ -398,9 +398,9 @@ w_2 = \frac{2(n-1)^2}{(n+1)^2 (n+2)^2}.
  
  <entry>
    <title>Nonlinear Transformation of a Gaussian</title>
-   <link href="https://jacobdowns.github.io/'/sigmapy/2019/06/10/gaussian_transformation/"/>
+   <link href="http://localhost:4000/sigmapy/2019/06/10/gaussian_transformation/"/>
    <updated>2019-06-10T00:00:00-06:00</updated>
-   <id>https://jacobdowns.github.io/'/sigmapy/2019/06/10/gaussian_transformation</id>
+   <id>http://localhost:4000/sigmapy/2019/06/10/gaussian_transformation</id>
    <content type="html">&lt;p&gt;Suppose that $\pmb{x} \sim N(\pmb{x_0}, P_x)$ is a Gaussian random variable with mean $\pmb{x_0}$ and covariance matrix $P_x$. If $f : \mathbb{R}^n \to \mathbb{R}^m$ is a nonlinear function, we would like to approximate the statistics of the non-Gaussian random variable
 \begin{equation}
 \pmb{y} = f(\pmb{x}) 
@@ -501,9 +501,9 @@ Integral estimate: 0.49999999901341236
  
  <entry>
    <title>Gaussian Quadrature</title>
-   <link href="https://jacobdowns.github.io/'/sigmapy/2019/06/10/gaussian_quadrature/"/>
+   <link href="http://localhost:4000/sigmapy/2019/06/10/gaussian_quadrature/"/>
    <updated>2019-06-10T00:00:00-06:00</updated>
-   <id>https://jacobdowns.github.io/'/sigmapy/2019/06/10/gaussian_quadrature</id>
+   <id>http://localhost:4000/sigmapy/2019/06/10/gaussian_quadrature</id>
    <content type="html">&lt;p&gt;Here we consider the problem of efficiently estimating expected value integrals for a nonlinear function $f(\pmb{x}) : \mathbb{R}^n \to \mathbb{R}^m$
 \begin{equation}
 E[f(\pmb{x})] = \int_{\mathbb{R}^n} f(\pmb{x}) N(\pmb{x} | \pmb{0}, I) d \pmb{x}.
@@ -638,9 +638,9 @@ Expected value from UT: [1. 1. 0.]
  
  <entry>
    <title>Conditional Distributions</title>
-   <link href="https://jacobdowns.github.io/'/sigmapy/2019/06/10/conditional_distributions/"/>
+   <link href="http://localhost:4000/sigmapy/2019/06/10/conditional_distributions/"/>
    <updated>2019-06-10T00:00:00-06:00</updated>
-   <id>https://jacobdowns.github.io/'/sigmapy/2019/06/10/conditional_distributions</id>
+   <id>http://localhost:4000/sigmapy/2019/06/10/conditional_distributions</id>
    <content type="html">&lt;p&gt;Gaussian filters use statistical linearization to obtain mean and covariance estimates. Suppose that $x \sim N(\pmb{x_0}, P_x)$ and
 \begin{equation}
 \pmb{y} = f(\pmb{x}) 
@@ -740,9 +740,9 @@ where $K = CS^{-1}$ is the Kalman gain.&lt;/p&gt;
  
  <entry>
    <title>Sigmapy</title>
-   <link href="https://jacobdowns.github.io/'/sigmapy/2019/06/07/sigmapy/"/>
+   <link href="http://localhost:4000/sigmapy/2019/06/07/sigmapy/"/>
    <updated>2019-06-07T00:00:00-06:00</updated>
-   <id>https://jacobdowns.github.io/'/sigmapy/2019/06/07/sigmapy</id>
+   <id>http://localhost:4000/sigmapy/2019/06/07/sigmapy</id>
    <content type="html">
 </content>
  </entry>
