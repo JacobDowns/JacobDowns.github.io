@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Sigma Point Sets
-categories: Sigmapy
+categories: notebooks
 ---
 
 Here we outline algorithms for generating each sigma point set in Sigmapy for a standard Gaussian weighting function, $\mathcal{N}(\pmb{0}, I)$ in $n$ dimensions with mean $\pmb{0}$ and identity covariance. Sigma points are denoted $\chi_i$, mean weights $w_i^m$, and covariance weights $w_i^c$. General Gaussian weighting functions are $\mathcal{N}(\pmb{x_0}, P_x)$ are handled by transforming each sigma points $\chi_i$ according to 

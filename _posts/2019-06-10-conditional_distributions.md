@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Conditional Distributions
-categories: Sigmapy
+categories: notebooks
 ---
 
 Gaussian filters use statistical linearization to obtain mean and covariance estimates. Suppose that $x \sim N(\pmb{x_0}, P_x)$ and

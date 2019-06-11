@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Gaussian Quadrature
-categories: Sigmapy
+categories: notebooks
 ---
 
 Here we consider the problem of efficiently estimating expected value integrals for a nonlinear function $f(\pmb{x}) : \mathbb{R}^n \to \mathbb{R}^m$

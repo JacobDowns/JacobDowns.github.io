@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Nonlinear Transformation of a Gaussian
-categories: Sigmapy
+categories: notebooks
 ---
 
 Suppose that $\pmb{x} \sim N(\pmb{x_0}, P_x)$ is a Gaussian random variable with mean $\pmb{x_0}$ and covariance matrix $P_x$. If $f : \mathbb{R}^n \to \mathbb{R}^m$ is a nonlinear function, we would like to approximate the statistics of the non-Gaussian random variable
