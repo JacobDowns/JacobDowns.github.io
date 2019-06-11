@@ -30,7 +30,6 @@ P_y = E[(f(\pmb{x}) - E(f(\pmb{x})) \; (f(\pmb{x}) - E(f(\pmb{x}))^T] \\\
 \approx A P_x A^T = E[f(\pmb{x}) \; \delta \pmb{x}^T] P_x^{-1} E[f(\pmb{x}) \; \delta \pmb{x}^T].
 \end{gathered}
 \end{equation}
-Note that statistical linearization involves computing expectation integrals $E[f(\pmb{x})]$ and $E[f(\pmb{x}) \; \delta \pmb{x}^T]$ of the form discussed in the sections on [Gaussian quadrature]({% post_url sigmapy/2019-06-10-gaussian_quadrature %}).
 
 
 ## Conditional Distribution for an Additive Transform 

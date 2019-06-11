@@ -4,7 +4,7 @@
  <title>J. Z. Downs</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2019-06-11T17:35:29-06:00</updated>
+ <updated>2019-06-11T17:43:53-06:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Jacob Downs</name>
@@ -503,7 +503,7 @@ E[\pmb{y}] = \int_{\mathbb{R}^n} f(\pmb{x}) N(\pmb{x} | \pmb{x_0}, P_x) d \pmb{x
 Integral estimate: 0.49999999901341236
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Given the importance of expected value integrals in filtering applications, considerable effort has gone into efficiently estimating Gaussian weighted integrals of the form shown in Equation \ref{eq:gwint}. For a simple 1D problem, a basic quadrature rule suffices. However, generalizations of 1D quadrature rules to many dimensions result in methods in which the number of points grows exponentially with dimension. Hence, these methods are computationally intractable for many problems. In the &lt;a href=&quot;/sigmapy/examples/gaussian_quadrature/&quot;&gt;next section&lt;/a&gt;, we’ll show an example of a much more efficient method for computing Gaussian weighted integrals called the Unscented Transform.&lt;/p&gt;
+&lt;p&gt;Given the importance of expected value integrals in filtering applications, considerable effort has gone into efficiently estimating Gaussian weighted integrals of the form shown in Equation \ref{eq:gwint}. For a simple 1D problem, a basic quadrature rule suffices. However, generalizations of 1D quadrature rules to many dimensions result in methods in which the number of points grows exponentially with dimension. Hence, these methods are computationally intractable for many problems. In the next section, we’ll show an example of a much more efficient method for computing Gaussian weighted integrals called the Unscented Transform.&lt;/p&gt;
 
 &lt;h2 id=&quot;bibliography&quot;&gt;Bibliography&lt;/h2&gt;
 
@@ -678,8 +678,7 @@ Here  $\pmb{b} = E[f(\pmb{x})]$ is exactly the mean of $\pmb{y} = f(\pmb{x})$. T
 P_y = E[(f(\pmb{x}) - E(f(\pmb{x})) \; (f(\pmb{x}) - E(f(\pmb{x}))^T] \\ 
 \approx A P_x A^T = E[f(\pmb{x}) \; \delta \pmb{x}^T] P_x^{-1} E[f(\pmb{x}) \; \delta \pmb{x}^T].
 \end{gathered}
-\end{equation}
-Note that statistical linearization involves computing expectation integrals $E[f(\pmb{x})]$ and $E[f(\pmb{x}) \; \delta \pmb{x}^T]$ of the form discussed in the sections on &lt;a href=&quot;/notebooks/2019/06/10/gaussian_quadrature/&quot;&gt;Gaussian quadrature&lt;/a&gt;.&lt;/p&gt;
+\end{equation}&lt;/p&gt;
 
 &lt;h2 id=&quot;conditional-distribution-for-an-additive-transform&quot;&gt;Conditional Distribution for an Additive Transform&lt;/h2&gt;
 

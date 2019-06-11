@@ -100,7 +100,7 @@ print("Integral estimate: {}".format(y_mean2))
     Integral estimate: 0.49999999901341236
 
 
-Given the importance of expected value integrals in filtering applications, considerable effort has gone into efficiently estimating Gaussian weighted integrals of the form shown in Equation \ref{eq:gwint}. For a simple 1D problem, a basic quadrature rule suffices. However, generalizations of 1D quadrature rules to many dimensions result in methods in which the number of points grows exponentially with dimension. Hence, these methods are computationally intractable for many problems. In the [next section](/sigmapy/examples/gaussian_quadrature/), we'll show an example of a much more efficient method for computing Gaussian weighted integrals called the Unscented Transform. 
+Given the importance of expected value integrals in filtering applications, considerable effort has gone into efficiently estimating Gaussian weighted integrals of the form shown in Equation \ref{eq:gwint}. For a simple 1D problem, a basic quadrature rule suffices. However, generalizations of 1D quadrature rules to many dimensions result in methods in which the number of points grows exponentially with dimension. Hence, these methods are computationally intractable for many problems. In the next section, we'll show an example of a much more efficient method for computing Gaussian weighted integrals called the Unscented Transform. 
 
 ## Bibliography
 
