@@ -11,7 +11,7 @@ tagline:             'Sums and summits'
 description:         'A place code, math, and visualizations.'
 url:                 https://jacobdowns.github.io/'
 baseurl:             ''
-paginate:            1
+paginate:            5
 
 # About/contact
 author:
