@@ -1,0 +1,22 @@
+---
+title: "About"
+---
+
+## Bio
+
+I’m Jacob Downs, a Montana boy who grew into a certified nerd. Here's a juble of professional as well as personal interests. 
+
+## Interests
+
+- Numerical Modeling
+- Machine Learning
+- Data Visualization 
+- Exploring the Outdoors
+- Music
+- Finding Shiny Rocks / Fossils
+- Weight Lifting
+
+## Contact
+
+- Email: jacob.downs@umt.edu
+- GitHub: https://github.com/JacobDowns/

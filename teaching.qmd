@@ -1,0 +1,18 @@
+---
+title: "Teaching"
+---
+
+## Courses
+
+### Spring 2026
+
+* CSCI 391 Cloud Computing (Undergraduate)
+    * Cloud fundamentals, PaaS, DevOps workflows, security, and intro cloud ML
+    *  Materials: https://your-username.github.io/cloud-computing/
+
+### Fall 2025
+
+* CSCI 491 / 591: High Performance Computing
+    * Parallel programming, GPU programming, profiling, and using high performance computers.
+* CSCI 340: Database Design 
+    * Designing and implementing robust, normalized SQL databases

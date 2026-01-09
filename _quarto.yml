@@ -1,0 +1,33 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Jacob Downs"
+  description: "Academic portfolio, writing, and projects."
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: research.qmd
+        text: Research
+      - href: teaching.qmd
+        text: Teaching
+      - href: posts/index.qmd
+        text: Writing
+      - href: about.qmd
+        text: About
+    right:
+      - icon: github
+        href: https://github.com/JacobDowns/
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-location: right
+    smooth-scroll: true
+
+bibliography: references.bib
+csl: https://www.zotero.org/styles/ieee

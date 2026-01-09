@@ -1,0 +1,11 @@
+---
+title: "Writing"
+listing:
+  contents: .
+  sort: "date desc"
+  type: default
+  categories: true
+  feed: true
+---
+
+Short posts, course notes, and guides.

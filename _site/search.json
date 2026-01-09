@@ -1,0 +1,184 @@
+[
+  {
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teaching",
+    "section": "",
+    "text": "CSCI 391 Cloud Computing (Undergraduate)\n\nCloud fundamentals, PaaS, DevOps workflows, security, and intro cloud ML\nMaterials: https://your-username.github.io/cloud-computing/\n\n\n\n\n\n\nCSCI 491 / 591: High Performance Computing\n\nParallel programming, GPU programming, profiling, and using high performance computers.\n\nCSCI 340: Database Design\n\nDesigning and implementing robust, normalized SQL databases"
+  },
+  {
+    "objectID": "teaching.html#courses",
+    "href": "teaching.html#courses",
+    "title": "Teaching",
+    "section": "",
+    "text": "CSCI 391 Cloud Computing (Undergraduate)\n\nCloud fundamentals, PaaS, DevOps workflows, security, and intro cloud ML\nMaterials: https://your-username.github.io/cloud-computing/\n\n\n\n\n\n\nCSCI 491 / 591: High Performance Computing\n\nParallel programming, GPU programming, profiling, and using high performance computers.\n\nCSCI 340: Database Design\n\nDesigning and implementing robust, normalized SQL databases"
+  },
+  {
+    "objectID": "teaching.html#teaching-philosophy-short",
+    "href": "teaching.html#teaching-philosophy-short",
+    "title": "Teaching",
+    "section": "Teaching philosophy (short)",
+    "text": "Teaching philosophy (short)\nI aim to teach practical skills while emphasizing mental models: trade-offs, reliability, security boundaries, and reproducibility."
+  },
+  {
+    "objectID": "posts/index.html",
+    "href": "posts/index.html",
+    "title": "Writing",
+    "section": "",
+    "text": "Short posts, course notes, and guides.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome\n\n\n\nportfolio\n\nteaching\n\n\n\n\n\n\n\n\n\nJan 9, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Jacob Downs",
+    "section": "",
+    "text": "Antelope near Heart Mountain, Wyoming.\n\n\nWelcome! I am Jacob Downs, an assistant professor in the computer science department at the University of Montana. Inspired by the beauty of the natural world, my research aims to improve out understanding of physical processes through numerical, statistical, and machine-learning based models.\nThis site hosts:\n\nProjects (open-source + demos)\nTeaching materials (course notes, labs)\nWriting (short posts & guides)\n\n\n\n\n\n\n\nNote\n\n\n\nIf you’re looking for my Cloud Computing course materials, see:\nCloud Computing Course Site"
+  },
+  {
+    "objectID": "index.html#hi",
+    "href": "index.html#hi",
+    "title": "Jacob Downs",
+    "section": "",
+    "text": "I’m Alex Doe, a faculty member interested in cloud computing, developer tooling, and teaching practical systems skills.\nThis site hosts:\n\nProjects (open-source + demos)\nTeaching materials (course notes, labs)\nWriting (short posts & guides)\n\n\n\n\n\n\n\nNote\n\n\n\nIf you’re looking for my Cloud Computing course materials, see:\nCloud Computing Course Site"
+  },
+  {
+    "objectID": "index.html#highlights",
+    "href": "index.html#highlights",
+    "title": "Jacob Downs",
+    "section": "Highlights",
+    "text": "Highlights\n\n\n\nCurrent focus\n\nCloud computing education\nDevOps & automation\nSecure-by-default architectures\n\n\n\n\nQuick links\n\nResearch\nTeaching\nWriting\nAbout"
+  },
+  {
+    "objectID": "index.html#selected-publications-example",
+    "href": "index.html#selected-publications-example",
+    "title": "Jacob Downs",
+    "section": "Selected publications (example)",
+    "text": "Selected publications (example)\n\nDoe, A. A Practical View of Cloud Pedagogy. (2025). [1]"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I’m Jacob Downs, a Montana boy who grew into a certified nerd. Here’s a juble of professional as well as personal interests."
+  },
+  {
+    "objectID": "about.html#bio-placeholder",
+    "href": "about.html#bio-placeholder",
+    "title": "About",
+    "section": "",
+    "text": "I’m Jacob Downs, a Montana boy who grew into a certified nerd. Here’s a juble of professional as well as personal interests."
+  },
+  {
+    "objectID": "about.html#interests",
+    "href": "about.html#interests",
+    "title": "About",
+    "section": "Interests",
+    "text": "Interests\n\nNumerical Modeling\nMachine Learning\nData Visualization\nExploring the Outdoors\nMusic\nFinding Shiny Rocks / Fossils\nWeight Lifting"
+  },
+  {
+    "objectID": "about.html#contact",
+    "href": "about.html#contact",
+    "title": "About",
+    "section": "Contact",
+    "text": "Contact\n\nEmail: jacob.downs@umt.edu\nGitHub: https://github.com/JacobDowns/"
+  },
+  {
+    "objectID": "posts/2026-01-09-welcome.html",
+    "href": "posts/2026-01-09-welcome.html",
+    "title": "Welcome",
+    "section": "",
+    "text": "This is a placeholder post. I’ll use this space for:"
+  },
+  {
+    "objectID": "posts/2026-01-09-welcome.html#a-citation-example",
+    "href": "posts/2026-01-09-welcome.html#a-citation-example",
+    "title": "Welcome",
+    "section": "A citation example",
+    "text": "A citation example\nThe NIST definition is a common starting point for cloud computing [1]."
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "What: Course notes, labs, and resources\nTech: Quarto, GitHub Pages\nLink: https://your-username.github.io/cloud-computing/\n\n\n\n\n\nWhat: Retro UI design system for course content\nTech: CSS + Quarto callouts\n\n\n\n\n\nWhat: A small lab showing reproducible infrastructure patterns\nConcepts: state, plan/apply, drift, review\n\n\n\n\n\n\n\nTip\n\n\n\nLater, you can add screenshots or embed short GIFs of demos here."
+  },
+  {
+    "objectID": "projects.html#selected-projects",
+    "href": "projects.html#selected-projects",
+    "title": "Projects",
+    "section": "",
+    "text": "What: Course notes, labs, and resources\nTech: Quarto, GitHub Pages\nLink: https://your-username.github.io/cloud-computing/\n\n\n\n\n\nWhat: Retro UI design system for course content\nTech: CSS + Quarto callouts\n\n\n\n\n\nWhat: A small lab showing reproducible infrastructure patterns\nConcepts: state, plan/apply, drift, review\n\n\n\n\n\n\n\nTip\n\n\n\nLater, you can add screenshots or embed short GIFs of demos here."
+  },
+  {
+    "objectID": "teaching.html#spring-2026",
+    "href": "teaching.html#spring-2026",
+    "title": "Teaching",
+    "section": "Spring 2026",
+    "text": "Spring 2026\n\nCSCI 391 Cloud Computing (Undergraduate)\n\nCloud fundamentals, PaaS, DevOps workflows, security, and intro cloud ML\nMaterials: https://your-username.github.io/cloud-computing/"
+  },
+  {
+    "objectID": "teaching.html#fall-2025",
+    "href": "teaching.html#fall-2025",
+    "title": "Teaching",
+    "section": "Fall 2025",
+    "text": "Fall 2025\n\nCSCI 491 / 591: High Performance Computing\n\n\nCSCI 340: Database Design"
+  },
+  {
+    "objectID": "about.html#bio",
+    "href": "about.html#bio",
+    "title": "About",
+    "section": "",
+    "text": "I’m Jacob Downs, a Montana boy who grew into a certified nerd. Here’s a juble of professional as well as personal interests."
+  },
+  {
+    "objectID": "projects.html#research",
+    "href": "projects.html#research",
+    "title": "Research",
+    "section": "",
+    "text": "My research focuses on using numerical models and machine learning methods to better understand physical processes. Much of my work has focused on glaciology, particularly looking at how glaciers and ice sheets respond to changes in climate."
+  },
+  {
+    "objectID": "projects.html#publications",
+    "href": "projects.html#publications",
+    "title": "Research",
+    "section": "Publications",
+    "text": "Publications"
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Research",
+    "section": "",
+    "text": "My research focuses on using numerical models and machine learning methods to better understand complex physical processes like how glaciers flow or fires spread over the landscape. Much of my work has focused on glaciology, particularly looking at how glaciers and ice sheets respond to changes in climate.\n\nSelected publications\n\n\n[1] L. Zeller, D. McGrath, L. Sass, C. Florentine, and J. Downs, “Equilibrium line altitudes, accumulation areas and the vulnerability of glaciers in alaska,” Journal of Glaciology, vol. 71, p. e28, Jan. 2025, doi: 10.1017/jog.2024.65.\n\n\n[2] A. A. Marcozzi, J. V. Johnson, R. A. Parsons, S. J. Flanary, C. A. Seielstad, and J. Z. Downs, “Application of LiDAR derived fuel cells to wildfire modeling at laboratory scale,” Fire, vol. 6, no. 10, p. 394, Oct. 2023, doi: 10.3390/fire6100394.\n\n\n[3] J. Downs and J. V. Johnson, “A rapidly retreating, marine-terminating glacier’s modeled response to perturbations in basal traction,” Journal of Glaciology, vol. 68, no. 271, pp. 891–900, Oct. 2022, doi: 10.1017/jog.2022.5.\n\n\n[4] J. P. Briner et al., “Rate of mass loss from the greenland ice sheet will exceed holocene values this century,” Nature, vol. 586, no. 7827, pp. 70–74, Oct. 2020, doi: 10.1038/s41586-020-2742-6.\n\n\n[5] J. Z. Downs, J. V. Johnson, J. T. Harper, T. Meierbachtol, and M. A. Werder, “Dynamic hydraulic conductivity reconciles mismatch between modeled and observed winter subglacial water pressure,” Journal of Geophysical Research: Earth Surface, vol. 123, no. 4, pp. 818–836, 2018, doi: 10.1002/2017JF004522.\n\n\n[6] B. D. Fleurian et al., “SHMIP the subglacial hydrology model intercomparison project,” Journal of Glaciology, vol. 64, no. 248, pp. 897–916, Dec. 2018, doi: 10.1017/jog.2018.78.\n\n\n[7] J. Downs, D. Brinkerhoff, and M. Morlighem, “Inferring time-dependent calving dynamics at helheim glacier,” Journal of Glaciology, vol. 69, no. 274, pp. 381–396, Apr. 2023, doi: 10.1017/jog.2022.68.\n\n\n[8] J. Downs, J. Johnson, J. Briner, N. Young, A. Lesnek, and J. Cuzzone, “Western greenland ice sheet retreat history reveals elevated precipitation during the holocene thermal maximum,” The Cryosphere, vol. 14, no. 3, pp. 1121–1137, Mar. 2020, doi: 10.5194/tc-14-1121-2020."
+  },
+  {
+    "objectID": "research.html#research",
+    "href": "research.html#research",
+    "title": "Research",
+    "section": "",
+    "text": "My research focuses on using numerical models and machine learning methods to better understand physical processes. Much of my work has focused on glaciology, particularly looking at how glaciers and ice sheets respond to changes in climate."
+  },
+  {
+    "objectID": "research.html#publications",
+    "href": "research.html#publications",
+    "title": "Research",
+    "section": "Publications",
+    "text": "Publications\n\nSelected publications\n\n\n[1] L. Zeller, D. McGrath, L. Sass, C. Florentine, and J. Downs, “Equilibrium line altitudes, accumulation areas and the vulnerability of glaciers in alaska,” Journal of Glaciology, vol. 71, p. e28, Jan. 2025, doi: 10.1017/jog.2024.65.\n\n\n[2] A. A. Marcozzi, J. V. Johnson, R. A. Parsons, S. J. Flanary, C. A. Seielstad, and J. Z. Downs, “Application of LiDAR derived fuel cells to wildfire modeling at laboratory scale,” Fire, vol. 6, no. 10, p. 394, Oct. 2023, doi: 10.3390/fire6100394."
+  },
+  {
+    "objectID": "research.html#selected-publications-example",
+    "href": "research.html#selected-publications-example",
+    "title": "Research",
+    "section": "Selected publications (example)",
+    "text": "Selected publications (example)\n[1]"
+  },
+  {
+    "objectID": "research.html#selected-publications",
+    "href": "research.html#selected-publications",
+    "title": "Research",
+    "section": "Selected publications",
+    "text": "Selected publications\nEquilibirum line alti[1]"
+  }
+]

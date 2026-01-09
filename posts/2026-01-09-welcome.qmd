@@ -1,0 +1,15 @@
+---
+title: "Welcome"
+date: 2026-01-09
+categories: [portfolio, teaching]
+---
+
+This is a placeholder post. I’ll use this space for:
+
+- course notes that don’t fit in a slide deck
+- short explainers (cloud concepts, DevOps, security)
+- links to labs and demos
+
+## A citation example
+
+The NIST definition is a common starting point for cloud computing [@nist800145].

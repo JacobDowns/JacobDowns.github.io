@@ -1,0 +1,20 @@
+---
+title: "Research"
+nocite: |
+  @zeller_equilibrium_2025
+  @downs_inferring_2023
+  @marcozzi_application_2023
+  @downs_rapidly_2022
+  @downs_western_2020
+  @downs_dynamic_2018
+  @briner_rate_2020
+  @fleurian_shmip_2018
+---
+
+My research focuses on using numerical models and machine learning methods to better understand complex physical processes like how glaciers flow or fires spread over the landscape. Much of my work has focused on glaciology, particularly looking at how glaciers and ice sheets respond to changes in climate.
+
+
+### Selected publications
+
+::: {#refs}
+:::
