@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-04-08">
+<meta name="dcterms.date" content="2026-04-09">
 <meta name="description" content="A derivation of the conservative enthalpy equation in sigma coordinates, with attention to continuity, boundary conditions, and finite-volume implementation.">
 
 <title>Deriving the Conservative Enthalpy Equation in Sigma Coordinates – Jacob Downs</title>
@@ -163,31 +163,26 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#why-conservative-form-matters-for-fvm" id="toc-why-conservative-form-matters-for-fvm" class="nav-link active" data-scroll-target="#why-conservative-form-matters-for-fvm">Why Conservative Form Matters for FVM</a></li>
-  <li><a href="#governing-equations" id="toc-governing-equations" class="nav-link" data-scroll-target="#governing-equations">Governing Equations</a>
+  <li><a href="#the-cartesian-baseline-and-the-flux-problem-in-sigma-space" id="toc-the-cartesian-baseline-and-the-flux-problem-in-sigma-space" class="nav-link active" data-scroll-target="#the-cartesian-baseline-and-the-flux-problem-in-sigma-space">1. The Cartesian Baseline and the “Flux Problem” in Sigma Space</a></li>
+  <li><a href="#governing-continuous-equations" id="toc-governing-continuous-equations" class="nav-link" data-scroll-target="#governing-continuous-equations">2. Governing Continuous Equations</a>
   <ul class="collapse">
-  <li><a href="#advective-enthalpy-equation" id="toc-advective-enthalpy-equation" class="nav-link" data-scroll-target="#advective-enthalpy-equation">Advective Enthalpy Equation</a></li>
-  <li><a href="#cartesian-continuity-equation" id="toc-cartesian-continuity-equation" class="nav-link" data-scroll-target="#cartesian-continuity-equation">Cartesian Continuity Equation</a></li>
-  <li><a href="#sigma-space-continuity-equation" id="toc-sigma-space-continuity-equation" class="nav-link" data-scroll-target="#sigma-space-continuity-equation">Sigma-Space Continuity Equation</a></li>
+  <li><a href="#the-vertical-diffusion-flux" id="toc-the-vertical-diffusion-flux" class="nav-link" data-scroll-target="#the-vertical-diffusion-flux">The Vertical Diffusion Flux</a></li>
+  <li><a href="#the-volumetric-source-term-q" id="toc-the-volumetric-source-term-q" class="nav-link" data-scroll-target="#the-volumetric-source-term-q">The Volumetric Source Term (<span class="math inline">\(Q\)</span>)</a></li>
   </ul></li>
-  <li><a href="#deriving-the-relative-vertical-velocity" id="toc-deriving-the-relative-vertical-velocity" class="nav-link" data-scroll-target="#deriving-the-relative-vertical-velocity">Deriving the Relative Vertical Velocity</a></li>
-  <li><a href="#kinematic-boundary-conditions" id="toc-kinematic-boundary-conditions" class="nav-link" data-scroll-target="#kinematic-boundary-conditions">Kinematic Boundary Conditions</a>
+  <li><a href="#transforming-the-continuity-equation" id="toc-transforming-the-continuity-equation" class="nav-link" data-scroll-target="#transforming-the-continuity-equation">3. Transforming the Continuity Equation</a></li>
+  <li><a href="#the-emergence-of-relative-vertical-velocity-omega" id="toc-the-emergence-of-relative-vertical-velocity-omega" class="nav-link" data-scroll-target="#the-emergence-of-relative-vertical-velocity-omega">4. The Emergence of Relative Vertical Velocity (<span class="math inline">\(\omega\)</span>)</a></li>
+  <li><a href="#transforming-the-kinematic-boundary-conditions" id="toc-transforming-the-kinematic-boundary-conditions" class="nav-link" data-scroll-target="#transforming-the-kinematic-boundary-conditions">5. Transforming the Kinematic Boundary Conditions</a>
   <ul class="collapse">
-  <li><a href="#at-the-upper-surface" id="toc-at-the-upper-surface" class="nav-link" data-scroll-target="#at-the-upper-surface">At the Upper Surface</a></li>
-  <li><a href="#at-the-bed" id="toc-at-the-bed" class="nav-link" data-scroll-target="#at-the-bed">At the Bed</a></li>
+  <li><a href="#at-the-upper-surface-sigma-1" id="toc-at-the-upper-surface-sigma-1" class="nav-link" data-scroll-target="#at-the-upper-surface-sigma-1">At the Upper Surface (<span class="math inline">\(\sigma = 1\)</span>)</a></li>
+  <li><a href="#at-the-lower-bed-sigma-0" id="toc-at-the-lower-bed-sigma-0" class="nav-link" data-scroll-target="#at-the-lower-bed-sigma-0">At the Lower Bed (<span class="math inline">\(\sigma = 0\)</span>)</a></li>
   </ul></li>
-  <li><a href="#deriving-the-conservative-form" id="toc-deriving-the-conservative-form" class="nav-link" data-scroll-target="#deriving-the-conservative-form">Deriving the Conservative Form</a>
+  <li><a href="#synthesis-deriving-the-conservative-equation" id="toc-synthesis-deriving-the-conservative-equation" class="nav-link" data-scroll-target="#synthesis-deriving-the-conservative-equation">6. Synthesis: Deriving the Conservative Equation</a></li>
+  <li><a href="#thermodynamic-boundary-conditions-in-conservative-form" id="toc-thermodynamic-boundary-conditions-in-conservative-form" class="nav-link" data-scroll-target="#thermodynamic-boundary-conditions-in-conservative-form">7. Thermodynamic Boundary Conditions in Conservative Form</a>
   <ul class="collapse">
-  <li><a href="#step-1" id="toc-step-1" class="nav-link" data-scroll-target="#step-1">Step 1</a></li>
-  <li><a href="#step-2" id="toc-step-2" class="nav-link" data-scroll-target="#step-2">Step 2</a></li>
-  <li><a href="#step-3" id="toc-step-3" class="nav-link" data-scroll-target="#step-3">Step 3</a></li>
+  <li><a href="#upper-surface-face-sigma-1" id="toc-upper-surface-face-sigma-1" class="nav-link" data-scroll-target="#upper-surface-face-sigma-1">Upper Surface Face (<span class="math inline">\(\sigma = 1\)</span>)</a></li>
+  <li><a href="#lower-bed-face-sigma-0" id="toc-lower-bed-face-sigma-0" class="nav-link" data-scroll-target="#lower-bed-face-sigma-0">Lower Bed Face (<span class="math inline">\(\sigma = 0\)</span>)</a></li>
   </ul></li>
-  <li><a href="#thermodynamic-boundary-conditions-in-conservative-form" id="toc-thermodynamic-boundary-conditions-in-conservative-form" class="nav-link" data-scroll-target="#thermodynamic-boundary-conditions-in-conservative-form">Thermodynamic Boundary Conditions in Conservative Form</a>
-  <ul class="collapse">
-  <li><a href="#upper-surface" id="toc-upper-surface" class="nav-link" data-scroll-target="#upper-surface">Upper Surface</a></li>
-  <li><a href="#lower-bed" id="toc-lower-bed" class="nav-link" data-scroll-target="#lower-bed">Lower Bed</a></li>
-  </ul></li>
-  <li><a href="#numerical-implications" id="toc-numerical-implications" class="nav-link" data-scroll-target="#numerical-implications">Numerical Implications</a></li>
+  <li><a href="#conclusion-why-this-is-the-desired-fvm-form" id="toc-conclusion-why-this-is-the-desired-fvm-form" class="nav-link" data-scroll-target="#conclusion-why-this-is-the-desired-fvm-form">8. Conclusion: Why This is the Desired FVM Form</a></li>
   </ul>
 </nav>
     </div>
@@ -217,7 +212,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 8, 2026</p>
+      <p class="date">April 9, 2026</p>
     </div>
   </div>
   
@@ -229,7 +224,7 @@ window.Quarto = {
 </header>
 
 
-<p>This note derives a strong-conservation form of the enthalpy equation in terrain-following sigma coordinates. The key goal is to rewrite the thermodynamics in a form that is compatible with a finite-volume method on a deforming ice column.</p>
+<p>This note derives a strong-conservation form of the enthalpy equation in terrain-following sigma coordinates. The key goal is to rewrite the thermodynamics in a form that is compatible with a finite-volume method (FVM) on a deforming ice column.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -240,145 +235,146 @@ Key Result
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The conserved quantity is not the specific enthalpy <span class="math inline">\(E\)</span>, but the thickness-weighted quantity <span class="math inline">\(HE\)</span>. The resulting conservative equation is</p>
+<p>To guarantee energy conservation on a moving grid, the conserved FVM quantity is not the specific enthalpy <span class="math inline">\(E\)</span>, but the thickness-weighted quantity <span class="math inline">\(HE\)</span>. The resulting conservative equation is:</p>
 <p><span class="math display">\[
 \frac{\partial (HE)}{\partial t}
 + \frac{\partial (HEu)}{\partial x}
 + \frac{\partial (HEv)}{\partial y}
-+ \frac{\partial (E\omega)}{\partial \sigma}
-= HS.
++ \frac{\partial}{\partial \sigma} \left( E\omega - \frac{\kappa}{H} \frac{\partial E}{\partial \sigma} \right)
+= \frac{H\Phi}{\rho} - \frac{H \rho_w}{\rho} L \, r_d \, \varpi(E).
 \]</span></p>
 </div>
 </div>
-<section id="why-conservative-form-matters-for-fvm" class="level2">
-<h2 class="anchored" data-anchor-id="why-conservative-form-matters-for-fvm">Why Conservative Form Matters for FVM</h2>
-<p>The finite-volume method is built around a simple balance law: the rate of change of a conserved quantity inside a control volume must equal the net flux through its boundary plus any source terms. In continuous form, that structure is</p>
+<section id="the-cartesian-baseline-and-the-flux-problem-in-sigma-space" class="level2">
+<h2 class="anchored" data-anchor-id="the-cartesian-baseline-and-the-flux-problem-in-sigma-space">1. The Cartesian Baseline and the “Flux Problem” in Sigma Space</h2>
+<p>The finite-volume method is built around a simple balance law: the rate of change of a conserved quantity inside a control volume must equal the net flux crossing its boundaries plus any internal source terms.</p>
+<p>In a rigid Cartesian coordinate system <span class="math inline">\((x, y, z)\)</span>, the physical volume of a grid cell is constant. Because ice is treated as incompressible (<span class="math inline">\(\nabla \cdot \mathbf{v} = 0\)</span>), the Cartesian enthalpy equation naturally exists in a strong conservative, flux-divergence form:</p>
 <p><span class="math display">\[
-\frac{\partial U}{\partial t} + \nabla \cdot \mathbf{F} = Q.
+\frac{\partial E}{\partial t} + \nabla \cdot \mathbf{F}_{\text{Cartesian}} = Q_{\text{Cartesian}}
 \]</span></p>
-<p>In a terrain-following sigma coordinate system,</p>
+<p>Here, the total flux vector <span class="math inline">\(\mathbf{F}_{\text{Cartesian}}\)</span> combines both <strong>advective transport</strong> (energy carried by the moving ice) and <strong>diffusive transport</strong> (thermal conduction). Neglecting horizontal diffusion, this vector is:</p>
+<p><span class="math display">\[
+\mathbf{F}_{\text{Cartesian}} = \mathbf{v}E - \mathbf{q}_{\text{diff}} = \begin{bmatrix} uE \\ vE \\ wE - \kappa \frac{\partial E}{\partial z} \end{bmatrix}
+\]</span></p>
+<p>The source term <span class="math inline">\(Q_{\text{Cartesian}}\)</span> contains only the true volumetric generation or destruction of heat strictly inside the cell—specifically, internal strain heating (<span class="math inline">\(\Phi\)</span>) and meltwater drainage:</p>
+<p><span class="math display">\[
+Q_{\text{Cartesian}} = \frac{\Phi}{\rho} - \frac{\rho_w}{\rho} L \, r_d \, \varpi(E)
+\]</span></p>
+<p><em>(where <span class="math inline">\(\kappa\)</span> is the effective thermal diffusivity, <span class="math inline">\(\rho\)</span> is ice density, and <span class="math inline">\(\varpi\)</span> is the water content).</em></p>
+<p>However, in a terrain-following sigma coordinate system,</p>
 <p><span class="math display">\[
 \sigma = \frac{z - b}{H},
 \]</span></p>
-<p>the computational grid stretches and shrinks as the ice thickness <span class="math inline">\(H\)</span> evolves. If the enthalpy equation is solved in its usual advective form, the solver tracks the transport of specific enthalpy <span class="math inline">\(E\)</span> but does not account for the changing physical volume of each cell. That creates a numerical mismatch: total energy can be created or destroyed when the ice thickens or thins.</p>
-<p>To recover strict conservation, the natural finite-volume state variable is the depth-integrated enthalpy per unit area, <span class="math inline">\(HE\)</span>.</p>
-</section>
-<section id="governing-equations" class="level2">
-<h2 class="anchored" data-anchor-id="governing-equations">Governing Equations</h2>
-<p>We need both the thermodynamic evolution equation and the corresponding continuity equation.</p>
-<section id="advective-enthalpy-equation" class="level3">
-<h3 class="anchored" data-anchor-id="advective-enthalpy-equation">Advective Enthalpy Equation</h3>
-<p>The advective transport of specific enthalpy <span class="math inline">\(E\)</span> in moving sigma coordinates is</p>
+<p>the computational grid stretches and shrinks over time as the ice thickness <span class="math inline">\(H\)</span> evolves. If the enthalpy equation is transformed directly into its advective form, we get:</p>
 <p><span class="math display">\[
 \frac{\partial E}{\partial t}
 + u \frac{\partial E}{\partial x}
 + v \frac{\partial E}{\partial y}
 + \dot{\sigma} \frac{\partial E}{\partial \sigma}
-= S.
+= \frac{\partial q_{\text{diff}, \sigma}}{\partial \sigma} + Q_{\sigma}
 \]</span></p>
-<p>Here:</p>
-<ul>
-<li><span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> are horizontal velocities.</li>
-<li><span class="math inline">\(\dot{\sigma}\)</span> is the vertical velocity relative to the moving sigma layers.</li>
-<li><span class="math inline">\(S\)</span> collects source, sink, and diffusive terms such as strain heating and vertical diffusion.</li>
-</ul>
+<p>This creates a severe numerical issue for FVM. While the spatial terms (<span class="math inline">\(u \frac{\partial E}{\partial x} + \dots\)</span>) represent advective transport (<span class="math inline">\(\mathbf{v}_\sigma \cdot \nabla_\sigma E\)</span>), they cannot be trivially rewritten as a flux divergence (<span class="math inline">\(\nabla_\sigma \cdot (\mathbf{v}_\sigma E)\)</span>). In Cartesian space, we could pull the velocity inside the derivative because the velocity field is divergenceless. In sigma space, the effective “velocity” field <span class="math inline">\((u, v, \dot{\sigma})\)</span> is <em>not</em> divergenceless because the physical grid is deforming over time and space.</p>
+<p>Because the equation cannot be natively forced into a divergence form, you cannot apply the Divergence Theorem to calculate an exact boundary flux. If an FVM solver updates <span class="math inline">\(E\)</span> using these advective terms while the mass-continuity solver independently shrinks the cell thickness <span class="math inline">\(H\)</span>, total energy is numerically destroyed.</p>
+<p>To recover strict conservation, we must force the equation back into a flux-divergence form by shifting the state variable from specific enthalpy <span class="math inline">\(E\)</span> to the depth-integrated enthalpy per unit area, <span class="math inline">\(HE\)</span>.</p>
 </section>
-<section id="cartesian-continuity-equation" class="level3">
-<h3 class="anchored" data-anchor-id="cartesian-continuity-equation">Cartesian Continuity Equation</h3>
-<p>Assuming ice is incompressible, mass conservation in Cartesian coordinates <span class="math inline">\((x, y, z, t)\)</span> gives</p>
+<section id="governing-continuous-equations" class="level2">
+<h2 class="anchored" data-anchor-id="governing-continuous-equations">2. Governing Continuous Equations</h2>
+<p>To synthesize the conservative form, we must couple the thermodynamics with mass conservation.</p>
+<section id="the-vertical-diffusion-flux" class="level3">
+<h3 class="anchored" data-anchor-id="the-vertical-diffusion-flux">The Vertical Diffusion Flux</h3>
+<p>To transform the Cartesian vertical diffusion <span class="math inline">\(\frac{\partial}{\partial z} (\kappa \frac{\partial E}{\partial z})\)</span> into sigma coordinates, we apply the chain rule (<span class="math inline">\(\frac{\partial}{\partial z} = \frac{1}{H}\frac{\partial}{\partial \sigma}\)</span>). Applying this to both the outer derivative and the inner gradient yields the sigma-space vertical diffusion divergence:</p>
 <p><span class="math display">\[
-\frac{\partial u}{\partial x}
-+ \frac{\partial v}{\partial y}
+\frac{\partial q_{\text{diff}, \sigma}}{\partial \sigma} = \frac{1}{H} \frac{\partial}{\partial \sigma} \left( \frac{\kappa}{H} \frac{\partial E}{\partial \sigma} \right)
+\]</span></p>
+</section>
+<section id="the-volumetric-source-term-q" class="level3">
+<h3 class="anchored" data-anchor-id="the-volumetric-source-term-q">The Volumetric Source Term (<span class="math inline">\(Q\)</span>)</h3>
+<p>The internal source term <span class="math inline">\(Q\)</span> remains identical in structure to its Cartesian counterpart, but its variables are now evaluated on the sigma grid:</p>
+<p><span class="math display">\[
+Q_{\sigma} = \frac{\Phi}{\rho} - \frac{\rho_w}{\rho} L \, r_d \, \varpi(E)
+\]</span></p>
+<p>The <strong>drainage</strong> term removes enthalpy from temperate ice to represent the gravitational percolation of liquid water out of the ice matrix (Aschwanden et al., 2012). The water content <span class="math inline">\(\varpi\)</span> is defined as the liquid fraction above the pressure melting point (<span class="math inline">\(E_{\text{pmp}}\)</span>):</p>
+<p><span class="math display">\[
+\varpi(E) = \frac{\max(E - E_{\text{pmp}}, \; 0)}{L}
+\]</span></p>
+<p>where <span class="math inline">\(E_{\text{pmp}} = c_i(T_{\text{pmp}} - T_{\text{ref}})\)</span> is the enthalpy at the pressure melting point (which depends on the local overburden pressure via the Clausius-Clapeyron relation), <span class="math inline">\(L\)</span> is the latent heat of fusion, and <span class="math inline">\(r_d\)</span> is the drainage rate (units s<span class="math inline">\(^{-1}\)</span>). Without this sink, temperate ice would accumulate unbounded water content — a physically unrealistic state that also degrades solver stability.</p>
+</section>
+</section>
+<section id="transforming-the-continuity-equation" class="level2">
+<h2 class="anchored" data-anchor-id="transforming-the-continuity-equation">3. Transforming the Continuity Equation</h2>
+<p>To derive the conservative form, we must first map the Cartesian continuity equation into sigma space. We start with the Cartesian statement of incompressibility:</p>
+<p><span class="math display">\[
+\left(\frac{\partial u}{\partial x}\right)_z
++ \left(\frac{\partial v}{\partial y}\right)_z
 + \frac{\partial w}{\partial z}
 = 0.
 \]</span></p>
+<p>When we change variables from <span class="math inline">\((x, y, z, t)\)</span> to <span class="math inline">\((x, y, \sigma, t)\)</span> where <span class="math inline">\(\sigma = \frac{z-b}{H}\)</span>, a horizontal derivative taken at a constant Cartesian depth <span class="math inline">\(z\)</span> must account for the crossing of sloped <span class="math inline">\(\sigma\)</span> layers. Applying the multivariate chain rule gives:</p>
+<p><span class="math display">\[
+\left(\frac{\partial u}{\partial x}\right)_z = \left(\frac{\partial u}{\partial x}\right)_\sigma + \frac{\partial \sigma}{\partial x} \frac{\partial u}{\partial \sigma}
+\]</span> <span class="math display">\[
+\left(\frac{\partial v}{\partial y}\right)_z = \left(\frac{\partial v}{\partial y}\right)_\sigma + \frac{\partial \sigma}{\partial y} \frac{\partial v}{\partial \sigma}
+\]</span></p>
+<p>By applying the quotient rule to <span class="math inline">\(\sigma = \frac{z-b}{H}\)</span>, we explicitly evaluate the geometric derivatives:</p>
+<p><span class="math display">\[
+\frac{\partial \sigma}{\partial x} = -\frac{1}{H} \left( \frac{\partial b}{\partial x} + \sigma \frac{\partial H}{\partial x} \right), \qquad \frac{\partial \sigma}{\partial y} = -\frac{1}{H} \left( \frac{\partial b}{\partial y} + \sigma \frac{\partial H}{\partial y} \right), \qquad \frac{\partial \sigma}{\partial z} = \frac{1}{H}
+\]</span></p>
+<p>Substituting these into the chain rule expansions, our Cartesian continuity equation becomes:</p>
+<p><span class="math display">\[
+\left(\frac{\partial u}{\partial x}\right)_\sigma - \frac{1}{H} \left( \frac{\partial b}{\partial x} + \sigma \frac{\partial H}{\partial x} \right) \frac{\partial u}{\partial \sigma} + \left(\frac{\partial v}{\partial y}\right)_\sigma - \frac{1}{H} \left( \frac{\partial b}{\partial y} + \sigma \frac{\partial H}{\partial y} \right) \frac{\partial v}{\partial \sigma} + \frac{1}{H} \frac{\partial w}{\partial \sigma} = 0
+\]</span></p>
+<p>To clear the fractions, we multiply the entire expression by the ice thickness <span class="math inline">\(H\)</span>:</p>
+<p><span class="math display">\[
+H\left(\frac{\partial u}{\partial x}\right)_\sigma + H\left(\frac{\partial v}{\partial y}\right)_\sigma + \frac{\partial w}{\partial \sigma} - \frac{\partial u}{\partial \sigma} \left( \frac{\partial b}{\partial x} + \sigma \frac{\partial H}{\partial x} \right) - \frac{\partial v}{\partial \sigma} \left( \frac{\partial b}{\partial y} + \sigma \frac{\partial H}{\partial y} \right) = 0
+\]</span></p>
+<p>We want to force the horizontal terms into a flux-divergence form. Using the reverse product rule, we know that <span class="math inline">\(H\frac{\partial u}{\partial x} = \frac{\partial (Hu)}{\partial x} - u\frac{\partial H}{\partial x}\)</span>. If we apply this to both horizontal velocities and manually add/subtract the time derivative <span class="math inline">\(\frac{\partial H}{\partial t}\)</span> to complete the mass conservation statement, we can regroup the entire equation into two distinct brackets:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\underbrace{ \left[ \frac{\partial H}{\partial t} + \frac{\partial (Hu)}{\partial x} + \frac{\partial (Hv)}{\partial y} \right] }_{\text{Divergence of Horizontal Mass}} &amp;+ \\
+\underbrace{ \left[ \frac{\partial w}{\partial \sigma} - \frac{\partial u}{\partial \sigma} \left( \frac{\partial b}{\partial x} + \sigma \frac{\partial H}{\partial x} \right) - \frac{\partial v}{\partial \sigma} \left( \frac{\partial b}{\partial y} + \sigma \frac{\partial H}{\partial y} \right) - \left( \frac{\partial H}{\partial t} + u \frac{\partial H}{\partial x} + v \frac{\partial H}{\partial y} \right) \right] }_{\text{Geometric Residuals}} &amp;= 0
+\end{aligned}
+\]</span></p>
 </section>
-<section id="sigma-space-continuity-equation" class="level3">
-<h3 class="anchored" data-anchor-id="sigma-space-continuity-equation">Sigma-Space Continuity Equation</h3>
-<p>After transforming from <span class="math inline">\((x, y, z)\)</span> to <span class="math inline">\((x, y, \sigma)\)</span>, the incompressible continuity equation becomes</p>
+<section id="the-emergence-of-relative-vertical-velocity-omega" class="level2">
+<h2 class="anchored" data-anchor-id="the-emergence-of-relative-vertical-velocity-omega">4. The Emergence of Relative Vertical Velocity (<span class="math inline">\(\omega\)</span>)</h2>
+<p>The algebraic transformation leaves us with a clean horizontal divergence, but a massive residual of vertical and geometric cross-terms.</p>
+<p>However, if we look closely at that second bracket, it is perfectly integrable with respect to <span class="math inline">\(\sigma\)</span>. We can define a new variable, <span class="math inline">\(\omega\)</span>, such that its vertical derivative <span class="math inline">\(\frac{\partial \omega}{\partial \sigma}\)</span> is exactly equal to that entire second bracket:</p>
+<p><span class="math display">\[
+\omega = w - \left( \frac{\partial b}{\partial t} + u \frac{\partial b}{\partial x} + v \frac{\partial b}{\partial y} \right) - \sigma \left( \frac{\partial H}{\partial t} + u \frac{\partial H}{\partial x} + v \frac{\partial H}{\partial y} \right)
+\]</span></p>
+<p><em>(You can verify this by differentiating <span class="math inline">\(\omega\)</span> with respect to <span class="math inline">\(\sigma\)</span>; because <span class="math inline">\(b\)</span> and <span class="math inline">\(H\)</span> do not depend on <span class="math inline">\(\sigma\)</span>, the differentiation exactly recovers the residual bracket).</em></p>
+<p>By making this substitution, the messy transformed continuity equation collapses into the elegant <strong>sigma-space continuity equation</strong>:</p>
 <p><span class="math display">\[
 \frac{\partial H}{\partial t}
 + \frac{\partial (Hu)}{\partial x}
 + \frac{\partial (Hv)}{\partial y}
 + \frac{\partial \omega}{\partial \sigma}
-= 0,
+= 0.
 \]</span></p>
-<p>where</p>
-<p><span class="math display">\[
-\omega = H\dot{\sigma}
-\]</span></p>
-<p>is the scaled relative vertical velocity.</p>
+<p><strong>Physical Interpretation:</strong> While <span class="math inline">\(\omega\)</span> emerged purely as a mathematical necessity to absorb the geometric residuals of the coordinate transformation, it has a strict physical meaning. It represents the scaled vertical velocity of the ice <em>relative</em> to the deforming computational grid. It takes the absolute vertical velocity (<span class="math inline">\(w\)</span>) and subtracts the vertical motion caused by sliding along the bed (the first parenthetical) and the vertical motion caused by the stretching of the ice column (the second parenthetical).</p>
 </section>
-</section>
-<section id="deriving-the-relative-vertical-velocity" class="level2">
-<h2 class="anchored" data-anchor-id="deriving-the-relative-vertical-velocity">Deriving the Relative Vertical Velocity</h2>
-<p>Start from the sigma-coordinate definition</p>
-<p><span class="math display">\[
-\sigma = \frac{z - b}{H},
-\]</span></p>
-<p>and take its material derivative:</p>
-<p><span class="math display">\[
-\dot{\sigma}
-= \frac{d\sigma}{dt}
-= \frac{\partial \sigma}{\partial t}
-+ u \frac{\partial \sigma}{\partial x}
-+ v \frac{\partial \sigma}{\partial y}
-+ w \frac{\partial \sigma}{\partial z}.
-\]</span></p>
-<p>Using the quotient rule, for any <span class="math inline">\(\xi \in \{x, y, t\}\)</span> we obtain</p>
-<p><span class="math display">\[
-\frac{\partial \sigma}{\partial \xi}
-= -\frac{1}{H}
-\left(
-\frac{\partial b}{\partial \xi}
-+ \sigma \frac{\partial H}{\partial \xi}
-\right),
-\qquad
-\frac{\partial \sigma}{\partial z} = \frac{1}{H}.
-\]</span></p>
-<p>Substituting these into the expression for <span class="math inline">\(\dot{\sigma}\)</span> and multiplying through by <span class="math inline">\(H\)</span> gives</p>
-<p><span class="math display">\[
-\omega
-= w
-- \left(
-\frac{\partial b}{\partial t}
-+ u \frac{\partial b}{\partial x}
-+ v \frac{\partial b}{\partial y}
-\right)
-- \sigma \left(
-\frac{\partial H}{\partial t}
-+ u \frac{\partial H}{\partial x}
-+ v \frac{\partial H}{\partial y}
-\right).
-\]</span></p>
-</section>
-<section id="kinematic-boundary-conditions" class="level2">
-<h2 class="anchored" data-anchor-id="kinematic-boundary-conditions">Kinematic Boundary Conditions</h2>
-<p>The interpretation of <span class="math inline">\(\omega\)</span> becomes clear when we evaluate it at the upper and lower boundaries.</p>
-<p>In Cartesian coordinates, the kinematic boundary conditions are:</p>
+<section id="transforming-the-kinematic-boundary-conditions" class="level2">
+<h2 class="anchored" data-anchor-id="transforming-the-kinematic-boundary-conditions">5. Transforming the Kinematic Boundary Conditions</h2>
+<p>Evaluating <span class="math inline">\(\omega\)</span> at the boundaries reveals its physical interpretation. In Cartesian coordinates, the kinematic boundary conditions (KBCs) are:</p>
 <ul>
-<li><p>Surface, with <span class="math inline">\(z = h_s = b + H\)</span>:</p>
-<p><span class="math display">\[
+<li><p><strong>Surface</strong> (<span class="math inline">\(z = h_s = b + H\)</span>): <span class="math display">\[
 w_s - \left(
 \frac{\partial h_s}{\partial t}
 + u_s \frac{\partial h_s}{\partial x}
 + v_s \frac{\partial h_s}{\partial y}
 \right) = -\dot{a},
-\]</span></p>
-<p>where <span class="math inline">\(\dot{a}\)</span> is surface accumulation.</p></li>
-<li><p>Bed, with <span class="math inline">\(z = b\)</span>:</p>
-<p><span class="math display">\[
+\]</span> where <span class="math inline">\(\dot{a}\)</span> is surface accumulation.</p></li>
+<li><p><strong>Bed</strong> (<span class="math inline">\(z = b\)</span>): <span class="math display">\[
 w_b - \left(
 \frac{\partial b}{\partial t}
 + u_b \frac{\partial b}{\partial x}
 + v_b \frac{\partial b}{\partial y}
 \right) = -\dot{m},
-\]</span></p>
-<p>where <span class="math inline">\(\dot{m}\)</span> is basal melt.</p></li>
+\]</span> where <span class="math inline">\(\dot{m}\)</span> is basal melt.</p></li>
 </ul>
-<section id="at-the-upper-surface" class="level3">
-<h3 class="anchored" data-anchor-id="at-the-upper-surface">At the Upper Surface</h3>
-<p>Set <span class="math inline">\(\sigma = 1\)</span> in the expression for <span class="math inline">\(\omega\)</span>. Writing <span class="math inline">\(H = h_s - b\)</span>, all bed terms cancel and we obtain</p>
+<section id="at-the-upper-surface-sigma-1" class="level3">
+<h3 class="anchored" data-anchor-id="at-the-upper-surface-sigma-1">At the Upper Surface (<span class="math inline">\(\sigma = 1\)</span>)</h3>
+<p>Substituting <span class="math inline">\(\sigma = 1\)</span> into our <span class="math inline">\(\omega\)</span> equation and expanding <span class="math inline">\(H = h_s - b\)</span>, all bed terms perfectly cancel:</p>
 <p><span class="math display">\[
 \omega_s
 = w_s - \left(
@@ -387,14 +383,11 @@ w_b - \left(
 + v_s \frac{\partial h_s}{\partial y}
 \right).
 \]</span></p>
-<p>This is exactly the Cartesian surface kinematic boundary condition, so</p>
-<p><span class="math display">\[
-\omega_s = -\dot{a}.
-\]</span></p>
+<p>This matches the Cartesian surface KBC exactly, yielding <span class="math inline">\(\omega_s = -\dot{a}\)</span>.</p>
 </section>
-<section id="at-the-bed" class="level3">
-<h3 class="anchored" data-anchor-id="at-the-bed">At the Bed</h3>
-<p>Set <span class="math inline">\(\sigma = 0\)</span> in the same expression. The grid-stretching term disappears, leaving</p>
+<section id="at-the-lower-bed-sigma-0" class="level3">
+<h3 class="anchored" data-anchor-id="at-the-lower-bed-sigma-0">At the Lower Bed (<span class="math inline">\(\sigma = 0\)</span>)</h3>
+<p>Substituting <span class="math inline">\(\sigma = 0\)</span> into the <span class="math inline">\(\omega\)</span> equation removes the grid-stretching term entirely:</p>
 <p><span class="math display">\[
 \omega_b
 = w_b - \left(
@@ -403,29 +396,22 @@ w_b - \left(
 + v_b \frac{\partial b}{\partial y}
 \right).
 \]</span></p>
-<p>This matches the Cartesian basal condition, so</p>
-<p><span class="math display">\[
-\omega_b = -\dot{m}.
-\]</span></p>
+<p>This matches the Cartesian basal KBC exactly, yielding <span class="math inline">\(\omega_b = -\dot{m}\)</span>.</p>
 </section>
 </section>
-<section id="deriving-the-conservative-form" class="level2">
-<h2 class="anchored" data-anchor-id="deriving-the-conservative-form">Deriving the Conservative Form</h2>
-<p>Now combine the enthalpy equation with the sigma-space continuity equation.</p>
-<section id="step-1" class="level3">
-<h3 class="anchored" data-anchor-id="step-1">Step 1</h3>
-<p>Multiply the advective enthalpy equation by <span class="math inline">\(H\)</span>. Since <span class="math inline">\(H\dot{\sigma} = \omega\)</span>, this gives</p>
+<section id="synthesis-deriving-the-conservative-equation" class="level2">
+<h2 class="anchored" data-anchor-id="synthesis-deriving-the-conservative-equation">6. Synthesis: Deriving the Conservative Equation</h2>
+<p>We now use the product rule to merge the advective enthalpy equation with the sigma-space continuity equation.</p>
+<p><strong>Step 1:</strong> Multiply the advective enthalpy equation by <span class="math inline">\(H\)</span>. Recalling that the vertical advective derivative term is <span class="math inline">\(\dot{\sigma}\frac{\partial E}{\partial \sigma}\)</span>, multiplying by <span class="math inline">\(H\)</span> converts this to <span class="math inline">\(\omega \frac{\partial E}{\partial \sigma}\)</span>:</p>
 <p><span class="math display">\[
 H \frac{\partial E}{\partial t}
 + Hu \frac{\partial E}{\partial x}
 + Hv \frac{\partial E}{\partial y}
 + \omega \frac{\partial E}{\partial \sigma}
-= HS.
+= \frac{\partial}{\partial \sigma} \left( \frac{\kappa}{H} \frac{\partial E}{\partial \sigma} \right) + \frac{H\Phi}{\rho} - \frac{H\rho_w}{\rho} L \, r_d \, \varpi(E)
 \]</span></p>
-</section>
-<section id="step-2" class="level3">
-<h3 class="anchored" data-anchor-id="step-2">Step 2</h3>
-<p>Multiply the sigma-space continuity equation by <span class="math inline">\(E\)</span>:</p>
+<p><em>(Notice how multiplying the diffusive flux by <span class="math inline">\(H\)</span> perfectly cancels the outer <span class="math inline">\(1/H\)</span> chain-rule factor, turning the diffusion term into a pure divergence).</em></p>
+<p><strong>Step 2:</strong> Multiply the sigma-space continuity equation by <span class="math inline">\(E\)</span>:</p>
 <p><span class="math display">\[
 E \frac{\partial H}{\partial t}
 + E \frac{\partial (Hu)}{\partial x}
@@ -433,84 +419,57 @@ E \frac{\partial H}{\partial t}
 + E \frac{\partial \omega}{\partial \sigma}
 = 0.
 \]</span></p>
-</section>
-<section id="step-3" class="level3">
-<h3 class="anchored" data-anchor-id="step-3">Step 3</h3>
-<p>Add the two equations. Using the product rule in reverse,</p>
-<ul>
-<li><span class="math inline">\(H \frac{\partial E}{\partial t} + E \frac{\partial H}{\partial t} = \frac{\partial (HE)}{\partial t}\)</span></li>
-<li><span class="math inline">\(Hu \frac{\partial E}{\partial x} + E \frac{\partial (Hu)}{\partial x} = \frac{\partial (HEu)}{\partial x}\)</span></li>
-<li><span class="math inline">\(Hv \frac{\partial E}{\partial y} + E \frac{\partial (Hv)}{\partial y} = \frac{\partial (HEv)}{\partial y}\)</span></li>
-<li><span class="math inline">\(\omega \frac{\partial E}{\partial \sigma} + E \frac{\partial \omega}{\partial \sigma} = \frac{\partial (E\omega)}{\partial \sigma}\)</span></li>
-</ul>
-<p>So the strong conservative form is</p>
+<p><strong>Step 3:</strong> Add the two equations together. By applying the reverse product rule (<span class="math inline">\(A\,dB + B\,dA = d(AB)\)</span>) to every pair of terms on the left side, the advective gradients cleanly collapse into divergences. Finally, we pull the pure divergence of the vertical diffusion term over to the left side, naturally grouping it with the vertical advection term.</p>
+<p>This yields the complete conservative equation:</p>
 <p><span class="math display">\[
 \frac{\partial (HE)}{\partial t}
 + \frac{\partial (HEu)}{\partial x}
 + \frac{\partial (HEv)}{\partial y}
-+ \frac{\partial (E\omega)}{\partial \sigma}
-= HS.
++ \frac{\partial}{\partial \sigma} \left( E\omega - \frac{\kappa}{H} \frac{\partial E}{\partial \sigma} \right)
+= \frac{H\Phi}{\rho} - \frac{H \rho_w}{\rho} L \, r_d \, \varpi(E).
 \]</span></p>
-</section>
 </section>
 <section id="thermodynamic-boundary-conditions-in-conservative-form" class="level2">
-<h2 class="anchored" data-anchor-id="thermodynamic-boundary-conditions-in-conservative-form">Thermodynamic Boundary Conditions in Conservative Form</h2>
-<p>The physical boundary conditions do not change, but their numerical interpretation does. Once the prognostic variable becomes <span class="math inline">\(HE\)</span>, the solver must apply boundary conditions in terms of total energy flux rather than pointwise values of specific enthalpy.</p>
-<section id="upper-surface" class="level3">
-<h3 class="anchored" data-anchor-id="upper-surface">Upper Surface</h3>
-<p>In the advective formulation, the upper boundary is usually a Dirichlet condition:</p>
-<p><span class="math display">\[
-E(\sigma = 1) = E_{\text{surface}}.
-\]</span></p>
-<p>In the conservative formulation, the finite-volume solver instead needs the energy flux through the upper face. Using <span class="math inline">\(\omega_s = -\dot{a}\)</span>,</p>
-<p><span class="math display">\[
-\text{Flux}_{\text{surface}}
-= E_{\text{surface}} \omega_s
-= -E_{\text{surface}} \dot{a}.
-\]</span></p>
-<p>So accumulation injects both mass and enthalpy consistently into the top control volume.</p>
-</section>
-<section id="lower-bed" class="level3">
-<h3 class="anchored" data-anchor-id="lower-bed">Lower Bed</h3>
-<p>In the advective formulation, the bed is typically imposed through a Neumann condition:</p>
-<p><span class="math display">\[
--\kappa \left(\frac{\partial E}{\partial z}\right)_{z=b}
-= q_{\text{geo}} + q_{\text{fric}}.
-\]</span></p>
-<p>Using</p>
-<p><span class="math display">\[
-\frac{\partial E}{\partial z} = \frac{1}{H} \frac{\partial E}{\partial \sigma},
-\]</span></p>
-<p>the sigma-space version is</p>
-<p><span class="math display">\[
--\frac{\kappa}{H}
-\left(\frac{\partial E}{\partial \sigma}\right)_{\sigma=0}
-= q_{\text{geo}} + q_{\text{fric}}.
-\]</span></p>
-<p>In conservative form, the total basal flux combines diffusion and mass loss:</p>
-<ul>
-<li>Diffusive contribution: <span class="math inline">\(q_{\text{geo}} + q_{\text{fric}}\)</span></li>
-<li>Advective contribution from melt: <span class="math inline">\(E_b \omega_b = -E_b \dot{m}\)</span></li>
-</ul>
-<p>Therefore,</p>
-<p><span class="math display">\[
-\text{Flux}_{\text{bed}}
-= -E_b \dot{m} + q_{\text{geo}} + q_{\text{fric}}.
-\]</span></p>
-<p>If basal melting occurs, the corresponding enthalpy leaves the system in the same step as the mass loss, preserving global energy conservation.</p>
-</section>
-</section>
-<section id="numerical-implications" class="level2">
-<h2 class="anchored" data-anchor-id="numerical-implications">Numerical Implications</h2>
-<p>For a finite-volume implementation, this formulation gives a few immediate benefits:</p>
+<h2 class="anchored" data-anchor-id="thermodynamic-boundary-conditions-in-conservative-form">7. Thermodynamic Boundary Conditions in Conservative Form</h2>
+<p>Because the state variable is now <span class="math inline">\(HE\)</span>, the physical boundary conditions must be applied directly to the vertical fluxes.</p>
+<section id="upper-surface-face-sigma-1" class="level3">
+<h3 class="anchored" data-anchor-id="upper-surface-face-sigma-1">Upper Surface Face (<span class="math inline">\(\sigma = 1\)</span>)</h3>
+<p>The total vertical flux is <span class="math inline">\(F_\sigma = E\omega - \frac{\kappa}{H}\frac{\partial E}{\partial \sigma}\)</span>. At the surface, this has two components:</p>
 <ol type="1">
-<li><p>Internal fluxes telescope exactly, so flux leaving one cell is the same flux entering its neighbor.</p></li>
-<li><p>The evolving cell thickness <span class="math inline">\(H\)</span> is tied directly to the transported quantity, which improves consistency on a deforming mesh.</p></li>
-<li><p>In the limit <span class="math inline">\(u = v = \omega = 0\)</span>, the equation reduces to</p>
+<li><p><strong>Advective flux</strong> from accumulation. Using <span class="math inline">\(\omega_s = -\dot{a}\)</span>: <span class="math display">\[
+F_{\sigma, \text{surface}}^{\text{adv}} = E_{\text{surface}} \omega_s = -E_{\text{surface}} \dot{a}.
+\]</span> Accumulation injects both mass and enthalpy consistently into the top control volume.</p></li>
+<li><p><strong>Diffusive flux</strong> from thermal conduction. The standard Dirichlet condition (<span class="math inline">\(E_s\)</span> prescribed) implicitly determines this flux: the solver computes the gradient between the prescribed surface value and the first interior node, and the resulting conductive flux enters the sub-surface control volume naturally through the diffusion stencil.</p></li>
+</ol>
+</section>
+<section id="lower-bed-face-sigma-0" class="level3">
+<h3 class="anchored" data-anchor-id="lower-bed-face-sigma-0">Lower Bed Face (<span class="math inline">\(\sigma = 0\)</span>)</h3>
+<p>In the advective formulation, the bed requires a Neumann condition for diffusion: <span class="math inline">\(-\frac{\kappa}{H} \left(\frac{\partial E}{\partial \sigma}\right)_{\sigma=0} = q_{\text{geo}} + q_{\text{fric}}\)</span>.</p>
+<p>In conservative form, the total basal flux <span class="math inline">\(F_{\sigma, \text{bed}}\)</span> automatically combines this diffusive contribution with the advective contribution from melting (<span class="math inline">\(E_b \omega_b = -E_b \dot{m}\)</span>):</p>
 <p><span class="math display">\[
-\frac{\partial (HE)}{\partial t} = 0,
+F_{\sigma, \text{bed}} = -E_b \dot{m} + q_{\text{geo}} + q_{\text{fric}}.
 \]</span></p>
-<p>so column energy is conserved even as the control volume changes.</p></li>
+<p>If basal melting occurs, the exact corresponding enthalpy leaves the system in the same mathematical step as the mass loss.</p>
+</section>
+</section>
+<section id="conclusion-why-this-is-the-desired-fvm-form" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion-why-this-is-the-desired-fvm-form">8. Conclusion: Why This is the Desired FVM Form</h2>
+<p>We began this derivation by noting that a finite-volume solver requires the governing equation to take a strict flux-divergence form:</p>
+<p><span class="math display">\[
+\frac{\partial U}{\partial t} + \nabla_\sigma \cdot \mathbf{F} = Q_{\text{total}}
+\]</span></p>
+<p>The equation we have derived satisfies this requirement in the computational space <span class="math inline">\((x, y, \sigma)\)</span>:</p>
+<ol type="1">
+<li><strong>The Conserved Variable (<span class="math inline">\(U\)</span>):</strong> The state variable tracked by the solver is <span class="math inline">\(U = HE\)</span>.</li>
+<li><strong>The Total Flux Vector (<span class="math inline">\(\mathbf{F}\)</span>):</strong> Every spatial derivative now wraps entirely around a boundary-crossing flux (combining advection and diffusion): <span class="math display">\[
+\mathbf{F} = \begin{bmatrix} F_x \\ F_y \\ F_\sigma \end{bmatrix} =
+\begin{bmatrix}
+HEu \\
+HEv \\
+E\omega - \frac{\kappa}{H} \frac{\partial E}{\partial \sigma}
+\end{bmatrix}
+\]</span></li>
+<li><strong>The Internal Sources (<span class="math inline">\(Q_{\text{total}}\)</span>):</strong> The remaining terms on the right-hand side are strictly volumetric: <span class="math inline">\(Q_{\text{total}} = \frac{H\Phi}{\rho} - \frac{H\rho_w}{\rho} L \, r_d \, \varpi(E)\)</span>, representing strain heating and meltwater drainage.</li>
 </ol>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -518,11 +477,11 @@ E(\sigma = 1) = E_{\text{surface}}.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Takeaway
+Numerical Payoff
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If the mesh thickness evolves, a solver that advances <span class="math inline">\(E\)</span> alone is not strictly conservative. Advancing <span class="math inline">\(HE\)</span> instead makes the thermodynamics compatible with finite-volume mass conservation and yields boundary conditions that are naturally expressed as energy fluxes.</p>
+<p>By moving the grid thickness <span class="math inline">\(H\)</span> inside the derivatives, the computational grid <span class="math inline">\((\Delta x, \Delta y, \Delta \sigma)\)</span> becomes completely static from the perspective of the FVM solver. The Divergence Theorem can now be safely applied.</p>
 </div>
 </div>
 
