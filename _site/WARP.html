@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About – Jacob Downs</title>
+<title>warp – Jacob Downs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -106,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Writing</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -132,58 +166,163 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#bio" id="toc-bio" class="nav-link active" data-scroll-target="#bio">Bio</a></li>
-  <li><a href="#interests" id="toc-interests" class="nav-link" data-scroll-target="#interests">Interests</a></li>
-  <li><a href="#contact" id="toc-contact" class="nav-link" data-scroll-target="#contact">Contact</a></li>
+  <li><a href="#warp.md" id="toc-warp.md" class="nav-link active" data-scroll-target="#warp.md">WARP.md</a>
+  <ul class="collapse">
+  <li><a href="#repository-overview" id="toc-repository-overview" class="nav-link" data-scroll-target="#repository-overview">Repository Overview</a></li>
+  <li><a href="#architecture" id="toc-architecture" class="nav-link" data-scroll-target="#architecture">Architecture</a>
+  <ul class="collapse">
+  <li><a href="#site-structure" id="toc-site-structure" class="nav-link" data-scroll-target="#site-structure">Site Structure</a></li>
+  <li><a href="#quarto-configuration" id="toc-quarto-configuration" class="nav-link" data-scroll-target="#quarto-configuration">Quarto Configuration</a></li>
+  <li><a href="#deployment" id="toc-deployment" class="nav-link" data-scroll-target="#deployment">Deployment</a></li>
+  </ul></li>
+  <li><a href="#development-commands" id="toc-development-commands" class="nav-link" data-scroll-target="#development-commands">Development Commands</a>
+  <ul class="collapse">
+  <li><a href="#build-and-preview" id="toc-build-and-preview" class="nav-link" data-scroll-target="#build-and-preview">Build and Preview</a></li>
+  <li><a href="#content-creation" id="toc-content-creation" class="nav-link" data-scroll-target="#content-creation">Content Creation</a></li>
+  <li><a href="#project-structure-commands" id="toc-project-structure-commands" class="nav-link" data-scroll-target="#project-structure-commands">Project Structure Commands</a></li>
+  </ul></li>
+  <li><a href="#file-conventions" id="toc-file-conventions" class="nav-link" data-scroll-target="#file-conventions">File Conventions</a>
+  <ul class="collapse">
+  <li><a href="#content-files" id="toc-content-files" class="nav-link" data-scroll-target="#content-files">Content Files</a></li>
+  <li><a href="#citations" id="toc-citations" class="nav-link" data-scroll-target="#citations">Citations</a></li>
+  <li><a href="#images" id="toc-images" class="nav-link" data-scroll-target="#images">Images</a></li>
+  </ul></li>
+  <li><a href="#important-notes" id="toc-important-notes" class="nav-link" data-scroll-target="#important-notes">Important Notes</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">About</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="bio" class="level2">
-<h2 class="anchored" data-anchor-id="bio">Bio</h2>
-<p>I’m Jacob Downs, a Montana kid who grew into a certified nerd. Here’s a juble of professional as well as personal interests.</p>
+<section id="warp.md" class="level1">
+<h1>WARP.md</h1>
+<p>This file provides guidance to WARP (warp.dev) when working with code in this repository.</p>
+<section id="repository-overview" class="level2">
+<h2 class="anchored" data-anchor-id="repository-overview">Repository Overview</h2>
+<p>This is an academic portfolio website built with Quarto and hosted on GitHub Pages. It contains research publications, teaching materials, blog posts, and personal information for Jacob Downs, an assistant professor at the University of Montana.</p>
 </section>
-<section id="interests" class="level2">
-<h2 class="anchored" data-anchor-id="interests">Interests</h2>
+<section id="architecture" class="level2">
+<h2 class="anchored" data-anchor-id="architecture">Architecture</h2>
+<section id="site-structure" class="level3">
+<h3 class="anchored" data-anchor-id="site-structure">Site Structure</h3>
 <ul>
-<li>Numerical Modeling</li>
-<li>Machine Learning</li>
-<li>Data Visualization</li>
-<li>Exploring the Outdoors</li>
-<li>Music</li>
-<li>Finding Shiny Rocks / Fossils</li>
-<li>Weight Lifting</li>
+<li><strong>Root level</strong>: Main pages (index, research, teaching, about) as <code>.qmd</code> files</li>
+<li><strong>posts/</strong>: Blog posts and writing, with each post as a dated <code>.qmd</code> file
+<ul>
+<li><code>_metadata.yml</code>: Default formatting configuration for all posts</li>
+<li><code>index.qmd</code>: Auto-generates listing page from post contents</li>
+</ul></li>
+<li>**_site/**: Generated static site output (gitignored, do not edit directly)</li>
+<li><strong>images/</strong>: Static image assets referenced in content</li>
+<li>**_quarto.yml**: Global site configuration (navigation, theme, bibliography)</li>
+<li><strong>references.bib</strong>: BibTeX bibliography for academic citations</li>
+<li><strong>styles.css</strong>: Custom CSS overrides</li>
 </ul>
 </section>
-<section id="contact" class="level2">
-<h2 class="anchored" data-anchor-id="contact">Contact</h2>
+<section id="quarto-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-configuration">Quarto Configuration</h3>
+<p>The site uses Quarto’s website project type with: - <strong>Theme</strong>: Cosmo (Bootstrap-based) - <strong>Citations</strong>: IEEE style via CSL, referencing <code>references.bib</code> - <strong>Navigation</strong>: Top navbar with Home, Research, Teaching, Writing, About - <strong>Output</strong>: HTML with right-side TOC and smooth scrolling</p>
+</section>
+<section id="deployment" class="level3">
+<h3 class="anchored" data-anchor-id="deployment">Deployment</h3>
+<p>Automated via GitHub Actions (<code>.github/workflows/publish.yml</code>): 1. Triggers on push to <code>main</code> branch 2. Sets up Quarto environment 3. Runs <code>quarto render</code> to build <code>_site/</code> 4. Deploys to GitHub Pages</p>
+</section>
+</section>
+<section id="development-commands" class="level2">
+<h2 class="anchored" data-anchor-id="development-commands">Development Commands</h2>
+<section id="build-and-preview" class="level3">
+<h3 class="anchored" data-anchor-id="build-and-preview">Build and Preview</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Render the entire site (generates _site/)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Preview site with live reload (opens browser at http://localhost:4200)</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Render a single file</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render path/to/file.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="content-creation" class="level3">
+<h3 class="anchored" data-anchor-id="content-creation">Content Creation</h3>
+<section id="adding-a-new-blog-post" class="level4">
+<h4 class="anchored" data-anchor-id="adding-a-new-blog-post">Adding a New Blog Post</h4>
+<ol type="1">
+<li><p>Create a new <code>.qmd</code> file in <code>posts/</code> with naming: <code>YYYY-MM-DD-title.qmd</code></p></li>
+<li><p>Include frontmatter with at minimum:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Post Title"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> YYYY-MM-DD</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">categories</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">category1</span><span class="kw">,</span><span class="at"> category2</span><span class="kw">]</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>The post automatically appears in <code>posts/index.qmd</code> listing</p></li>
+</ol>
+</section>
+<section id="adding-citations" class="level4">
+<h4 class="anchored" data-anchor-id="adding-citations">Adding Citations</h4>
+<ol type="1">
+<li><p>Add BibTeX entry to <code>references.bib</code></p></li>
+<li><p>Reference in <code>.qmd</code> files using <code>[@citation_key]</code></p></li>
+<li><p>For nocite (show in bibliography without inline citation), use frontmatter:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nocite</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  @citation_key1</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  @citation_key2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</section>
+</section>
+<section id="project-structure-commands" class="level3">
+<h3 class="anchored" data-anchor-id="project-structure-commands">Project Structure Commands</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check Quarto version</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> <span class="at">--version</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Validate project configuration</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> check</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean build artifacts</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> _site/ .quarto/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="file-conventions" class="level2">
+<h2 class="anchored" data-anchor-id="file-conventions">File Conventions</h2>
+<section id="content-files" class="level3">
+<h3 class="anchored" data-anchor-id="content-files">Content Files</h3>
 <ul>
-<li>Email: jacob.downs@umt.edu</li>
-<li>GitHub: https://github.com/JacobDowns/</li>
+<li>All content pages use <code>.qmd</code> (Quarto Markdown) format</li>
+<li>Frontmatter is YAML between <code>---</code> delimiters</li>
+<li>Posts must include <code>title</code>, <code>date</code>, and <code>categories</code> in frontmatter</li>
+</ul>
+</section>
+<section id="citations" class="level3">
+<h3 class="anchored" data-anchor-id="citations">Citations</h3>
+<ul>
+<li>Academic references stored in <code>references.bib</code> (BibTeX format)</li>
+<li>Citation keys follow format: <code>authorlastname_titleword_year</code></li>
+<li>Use IEEE citation style (configured globally in <code>_quarto.yml</code>)</li>
+</ul>
+</section>
+<section id="images" class="level3">
+<h3 class="anchored" data-anchor-id="images">Images</h3>
+<ul>
+<li>Store in <code>images/</code> directory</li>
+<li>Reference using relative paths: <code>images/filename.ext</code></li>
+<li>Use Quarto image syntax for captions: <code>![caption](path){options}</code></li>
+</ul>
+</section>
+</section>
+<section id="important-notes" class="level2">
+<h2 class="anchored" data-anchor-id="important-notes">Important Notes</h2>
+<ul>
+<li><strong>Do not manually edit <code>_site/</code></strong>: This directory is auto-generated by <code>quarto render</code></li>
+<li><strong>GitHub Actions handles deployment</strong>: No manual deployment steps needed after pushing to <code>main</code></li>
+<li><strong>Quarto must be installed locally</strong> to build/preview the site (not present in current environment)</li>
+<li><strong>Bibliography changes</strong>: After editing <code>references.bib</code>, re-render affected pages to update citations</li>
+<li><strong>Post listing is automatic</strong>: The <code>posts/index.qmd</code> uses Quarto’s listing feature to auto-populate from post files</li>
 </ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -1,5 +1,54 @@
 [
   {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Research",
+    "section": "",
+    "text": "My research focuses on using numerical models and machine learning methods to better understand complex physical processes like how glaciers flow or fires spread over the landscape. Much of my work has focused on glaciology, particularly looking at how glaciers and ice sheets respond to changes in climate.\n\nSelected publications\n\n\n[1] L. Zeller, D. McGrath, L. Sass, C. Florentine, and J. Downs, “Equilibrium line altitudes, accumulation areas and the vulnerability of glaciers in alaska,” Journal of Glaciology, vol. 71, p. e28, Jan. 2025, doi: 10.1017/jog.2024.65.\n\n\n[2] A. A. Marcozzi, J. V. Johnson, R. A. Parsons, S. J. Flanary, C. A. Seielstad, and J. Z. Downs, “Application of LiDAR derived fuel cells to wildfire modeling at laboratory scale,” Fire, vol. 6, no. 10, p. 394, Oct. 2023, doi: 10.3390/fire6100394.\n\n\n[3] J. Downs and J. V. Johnson, “A rapidly retreating, marine-terminating glacier’s modeled response to perturbations in basal traction,” Journal of Glaciology, vol. 68, no. 271, pp. 891–900, Oct. 2022, doi: 10.1017/jog.2022.5.\n\n\n[4] J. P. Briner et al., “Rate of mass loss from the greenland ice sheet will exceed holocene values this century,” Nature, vol. 586, no. 7827, pp. 70–74, Oct. 2020, doi: 10.1038/s41586-020-2742-6.\n\n\n[5] J. Z. Downs, J. V. Johnson, J. T. Harper, T. Meierbachtol, and M. A. Werder, “Dynamic hydraulic conductivity reconciles mismatch between modeled and observed winter subglacial water pressure,” Journal of Geophysical Research: Earth Surface, vol. 123, no. 4, pp. 818–836, 2018, doi: 10.1002/2017JF004522.\n\n\n[6] B. D. Fleurian et al., “SHMIP the subglacial hydrology model intercomparison project,” Journal of Glaciology, vol. 64, no. 248, pp. 897–916, Dec. 2018, doi: 10.1017/jog.2018.78.\n\n\n[7] J. Downs, D. Brinkerhoff, and M. Morlighem, “Inferring time-dependent calving dynamics at helheim glacier,” Journal of Glaciology, vol. 69, no. 274, pp. 381–396, Apr. 2023, doi: 10.1017/jog.2022.68.\n\n\n[8] J. Downs, J. Johnson, J. Briner, N. Young, A. Lesnek, and J. Cuzzone, “Western greenland ice sheet retreat history reveals elevated precipitation during the holocene thermal maximum,” The Cryosphere, vol. 14, no. 3, pp. 1121–1137, Mar. 2020, doi: 10.5194/tc-14-1121-2020."
+  },
+  {
+    "objectID": "WARP.html",
+    "href": "WARP.html",
+    "title": "WARP.md",
+    "section": "",
+    "text": "This file provides guidance to WARP (warp.dev) when working with code in this repository.\n\n\nThis is an academic portfolio website built with Quarto and hosted on GitHub Pages. It contains research publications, teaching materials, blog posts, and personal information for Jacob Downs, an assistant professor at the University of Montana.\n\n\n\n\n\n\nRoot level: Main pages (index, research, teaching, about) as .qmd files\nposts/: Blog posts and writing, with each post as a dated .qmd file\n\n_metadata.yml: Default formatting configuration for all posts\nindex.qmd: Auto-generates listing page from post contents\n\n**_site/**: Generated static site output (gitignored, do not edit directly)\nimages/: Static image assets referenced in content\n**_quarto.yml**: Global site configuration (navigation, theme, bibliography)\nreferences.bib: BibTeX bibliography for academic citations\nstyles.css: Custom CSS overrides\n\n\n\n\nThe site uses Quarto’s website project type with: - Theme: Cosmo (Bootstrap-based) - Citations: IEEE style via CSL, referencing references.bib - Navigation: Top navbar with Home, Research, Teaching, Writing, About - Output: HTML with right-side TOC and smooth scrolling\n\n\n\nAutomated via GitHub Actions (.github/workflows/publish.yml): 1. Triggers on push to main branch 2. Sets up Quarto environment 3. Runs quarto render to build _site/ 4. Deploys to GitHub Pages\n\n\n\n\n\n\n# Render the entire site (generates _site/)\nquarto render\n\n# Preview site with live reload (opens browser at http://localhost:4200)\nquarto preview\n\n# Render a single file\nquarto render path/to/file.qmd\n\n\n\n\n\n\nCreate a new .qmd file in posts/ with naming: YYYY-MM-DD-title.qmd\nInclude frontmatter with at minimum:\n---\ntitle: \"Post Title\"\ndate: YYYY-MM-DD\ncategories: [category1, category2]\n---\nThe post automatically appears in posts/index.qmd listing\n\n\n\n\n\nAdd BibTeX entry to references.bib\nReference in .qmd files using [@citation_key]\nFor nocite (show in bibliography without inline citation), use frontmatter:\nnocite: |\n  @citation_key1\n  @citation_key2\n\n\n\n\n\n# Check Quarto version\nquarto --version\n\n# Validate project configuration\nquarto check\n\n# Clean build artifacts\nrm -rf _site/ .quarto/\n\n\n\n\n\n\n\nAll content pages use .qmd (Quarto Markdown) format\nFrontmatter is YAML between --- delimiters\nPosts must include title, date, and categories in frontmatter\n\n\n\n\n\nAcademic references stored in references.bib (BibTeX format)\nCitation keys follow format: authorlastname_titleword_year\nUse IEEE citation style (configured globally in _quarto.yml)\n\n\n\n\n\nStore in images/ directory\nReference using relative paths: images/filename.ext\nUse Quarto image syntax for captions: ![caption](path){options}\n\n\n\n\n\n\nDo not manually edit _site/: This directory is auto-generated by quarto render\nGitHub Actions handles deployment: No manual deployment steps needed after pushing to main\nQuarto must be installed locally to build/preview the site (not present in current environment)\nBibliography changes: After editing references.bib, re-render affected pages to update citations\nPost listing is automatic: The posts/index.qmd uses Quarto’s listing feature to auto-populate from post files"
+  },
+  {
+    "objectID": "WARP.html#repository-overview",
+    "href": "WARP.html#repository-overview",
+    "title": "WARP.md",
+    "section": "",
+    "text": "This is an academic portfolio website built with Quarto and hosted on GitHub Pages. It contains research publications, teaching materials, blog posts, and personal information for Jacob Downs, an assistant professor at the University of Montana."
+  },
+  {
+    "objectID": "WARP.html#architecture",
+    "href": "WARP.html#architecture",
+    "title": "WARP.md",
+    "section": "",
+    "text": "Root level: Main pages (index, research, teaching, about) as .qmd files\nposts/: Blog posts and writing, with each post as a dated .qmd file\n\n_metadata.yml: Default formatting configuration for all posts\nindex.qmd: Auto-generates listing page from post contents\n\n**_site/**: Generated static site output (gitignored, do not edit directly)\nimages/: Static image assets referenced in content\n**_quarto.yml**: Global site configuration (navigation, theme, bibliography)\nreferences.bib: BibTeX bibliography for academic citations\nstyles.css: Custom CSS overrides\n\n\n\n\nThe site uses Quarto’s website project type with: - Theme: Cosmo (Bootstrap-based) - Citations: IEEE style via CSL, referencing references.bib - Navigation: Top navbar with Home, Research, Teaching, Writing, About - Output: HTML with right-side TOC and smooth scrolling\n\n\n\nAutomated via GitHub Actions (.github/workflows/publish.yml): 1. Triggers on push to main branch 2. Sets up Quarto environment 3. Runs quarto render to build _site/ 4. Deploys to GitHub Pages"
+  },
+  {
+    "objectID": "WARP.html#development-commands",
+    "href": "WARP.html#development-commands",
+    "title": "WARP.md",
+    "section": "",
+    "text": "# Render the entire site (generates _site/)\nquarto render\n\n# Preview site with live reload (opens browser at http://localhost:4200)\nquarto preview\n\n# Render a single file\nquarto render path/to/file.qmd\n\n\n\n\n\n\nCreate a new .qmd file in posts/ with naming: YYYY-MM-DD-title.qmd\nInclude frontmatter with at minimum:\n---\ntitle: \"Post Title\"\ndate: YYYY-MM-DD\ncategories: [category1, category2]\n---\nThe post automatically appears in posts/index.qmd listing\n\n\n\n\n\nAdd BibTeX entry to references.bib\nReference in .qmd files using [@citation_key]\nFor nocite (show in bibliography without inline citation), use frontmatter:\nnocite: |\n  @citation_key1\n  @citation_key2\n\n\n\n\n\n# Check Quarto version\nquarto --version\n\n# Validate project configuration\nquarto check\n\n# Clean build artifacts\nrm -rf _site/ .quarto/"
+  },
+  {
+    "objectID": "WARP.html#file-conventions",
+    "href": "WARP.html#file-conventions",
+    "title": "WARP.md",
+    "section": "",
+    "text": "All content pages use .qmd (Quarto Markdown) format\nFrontmatter is YAML between --- delimiters\nPosts must include title, date, and categories in frontmatter\n\n\n\n\n\nAcademic references stored in references.bib (BibTeX format)\nCitation keys follow format: authorlastname_titleword_year\nUse IEEE citation style (configured globally in _quarto.yml)\n\n\n\n\n\nStore in images/ directory\nReference using relative paths: images/filename.ext\nUse Quarto image syntax for captions: ![caption](path){options}"
+  },
+  {
+    "objectID": "WARP.html#important-notes",
+    "href": "WARP.html#important-notes",
+    "title": "WARP.md",
+    "section": "",
+    "text": "Do not manually edit _site/: This directory is auto-generated by quarto render\nGitHub Actions handles deployment: No manual deployment steps needed after pushing to main\nQuarto must be installed locally to build/preview the site (not present in current environment)\nBibliography changes: After editing references.bib, re-render affected pages to update citations\nPost listing is automatic: The posts/index.qmd uses Quarto’s listing feature to auto-populate from post files"
+  },
+  {
     "objectID": "teaching.html",
     "href": "teaching.html",
     "title": "Teaching",
@@ -14,18 +63,81 @@
     "text": "CSCI 391 Cloud Computing (Undergraduate)\n\nCloud fundamentals, PaaS, DevOps workflows, security, and intro cloud ML\nMaterials: https://your-username.github.io/cloud-computing/\n\n\n\n\n\n\nCSCI 491 / 591: High Performance Computing\n\nParallel programming, GPU programming, profiling, and using high performance computers.\n\nCSCI 340: Database Design\n\nDesigning and implementing robust, normalized SQL databases"
   },
   {
-    "objectID": "teaching.html#teaching-philosophy-short",
-    "href": "teaching.html#teaching-philosophy-short",
-    "title": "Teaching",
-    "section": "Teaching philosophy (short)",
-    "text": "Teaching philosophy (short)\nI aim to teach practical skills while emphasizing mental models: trade-offs, reliability, security boundaries, and reproducibility."
+    "objectID": "posts/2026-01-09-welcome.html",
+    "href": "posts/2026-01-09-welcome.html",
+    "title": "Welcome",
+    "section": "",
+    "text": "This is a placeholder post. I’ll use this space for:"
+  },
+  {
+    "objectID": "posts/2026-01-09-welcome.html#a-citation-example",
+    "href": "posts/2026-01-09-welcome.html#a-citation-example",
+    "title": "Welcome",
+    "section": "A citation example",
+    "text": "A citation example\nThe NIST definition is a common starting point for cloud computing nist800145?."
+  },
+  {
+    "objectID": "posts/enthalpy.html",
+    "href": "posts/enthalpy.html",
+    "title": "Deriving the Conservative Enthalpy Equation in Sigma Coordinates",
+    "section": "",
+    "text": "This note derives a strong-conservation form of the enthalpy equation in terrain-following sigma coordinates. The key goal is to rewrite the thermodynamics in a form that is compatible with a finite-volume method on a deforming ice column."
+  },
+  {
+    "objectID": "posts/enthalpy.html#why-conservative-form-matters-for-fvm",
+    "href": "posts/enthalpy.html#why-conservative-form-matters-for-fvm",
+    "title": "Deriving the Conservative Enthalpy Equation in Sigma Coordinates",
+    "section": "Why Conservative Form Matters for FVM",
+    "text": "Why Conservative Form Matters for FVM\nThe finite-volume method is built around a simple balance law: the rate of change of a conserved quantity inside a control volume must equal the net flux through its boundary plus any source terms. In continuous form, that structure is\n\\[\n\\frac{\\partial U}{\\partial t} + \\nabla \\cdot \\mathbf{F} = Q.\n\\]\nIn a terrain-following sigma coordinate system,\n\\[\n\\sigma = \\frac{z - b}{H},\n\\]\nthe computational grid stretches and shrinks as the ice thickness \\(H\\) evolves. If the enthalpy equation is solved in its usual advective form, the solver tracks the transport of specific enthalpy \\(E\\) but does not account for the changing physical volume of each cell. That creates a numerical mismatch: total energy can be created or destroyed when the ice thickens or thins.\nTo recover strict conservation, the natural finite-volume state variable is the depth-integrated enthalpy per unit area, \\(HE\\)."
+  },
+  {
+    "objectID": "posts/enthalpy.html#governing-equations",
+    "href": "posts/enthalpy.html#governing-equations",
+    "title": "Deriving the Conservative Enthalpy Equation in Sigma Coordinates",
+    "section": "Governing Equations",
+    "text": "Governing Equations\nWe need both the thermodynamic evolution equation and the corresponding continuity equation.\n\nAdvective Enthalpy Equation\nThe advective transport of specific enthalpy \\(E\\) in moving sigma coordinates is\n\\[\n\\frac{\\partial E}{\\partial t}\n+ u \\frac{\\partial E}{\\partial x}\n+ v \\frac{\\partial E}{\\partial y}\n+ \\dot{\\sigma} \\frac{\\partial E}{\\partial \\sigma}\n= S.\n\\]\nHere:\n\n\\(u\\) and \\(v\\) are horizontal velocities.\n\\(\\dot{\\sigma}\\) is the vertical velocity relative to the moving sigma layers.\n\\(S\\) collects source, sink, and diffusive terms such as strain heating and vertical diffusion.\n\n\n\nCartesian Continuity Equation\nAssuming ice is incompressible, mass conservation in Cartesian coordinates \\((x, y, z, t)\\) gives\n\\[\n\\frac{\\partial u}{\\partial x}\n+ \\frac{\\partial v}{\\partial y}\n+ \\frac{\\partial w}{\\partial z}\n= 0.\n\\]\n\n\nSigma-Space Continuity Equation\nAfter transforming from \\((x, y, z)\\) to \\((x, y, \\sigma)\\), the incompressible continuity equation becomes\n\\[\n\\frac{\\partial H}{\\partial t}\n+ \\frac{\\partial (Hu)}{\\partial x}\n+ \\frac{\\partial (Hv)}{\\partial y}\n+ \\frac{\\partial \\omega}{\\partial \\sigma}\n= 0,\n\\]\nwhere\n\\[\n\\omega = H\\dot{\\sigma}\n\\]\nis the scaled relative vertical velocity."
+  },
+  {
+    "objectID": "posts/enthalpy.html#deriving-the-relative-vertical-velocity",
+    "href": "posts/enthalpy.html#deriving-the-relative-vertical-velocity",
+    "title": "Deriving the Conservative Enthalpy Equation in Sigma Coordinates",
+    "section": "Deriving the Relative Vertical Velocity",
+    "text": "Deriving the Relative Vertical Velocity\nStart from the sigma-coordinate definition\n\\[\n\\sigma = \\frac{z - b}{H},\n\\]\nand take its material derivative:\n\\[\n\\dot{\\sigma}\n= \\frac{d\\sigma}{dt}\n= \\frac{\\partial \\sigma}{\\partial t}\n+ u \\frac{\\partial \\sigma}{\\partial x}\n+ v \\frac{\\partial \\sigma}{\\partial y}\n+ w \\frac{\\partial \\sigma}{\\partial z}.\n\\]\nUsing the quotient rule, for any \\(\\xi \\in \\{x, y, t\\}\\) we obtain\n\\[\n\\frac{\\partial \\sigma}{\\partial \\xi}\n= -\\frac{1}{H}\n\\left(\n\\frac{\\partial b}{\\partial \\xi}\n+ \\sigma \\frac{\\partial H}{\\partial \\xi}\n\\right),\n\\qquad\n\\frac{\\partial \\sigma}{\\partial z} = \\frac{1}{H}.\n\\]\nSubstituting these into the expression for \\(\\dot{\\sigma}\\) and multiplying through by \\(H\\) gives\n\\[\n\\omega\n= w\n- \\left(\n\\frac{\\partial b}{\\partial t}\n+ u \\frac{\\partial b}{\\partial x}\n+ v \\frac{\\partial b}{\\partial y}\n\\right)\n- \\sigma \\left(\n\\frac{\\partial H}{\\partial t}\n+ u \\frac{\\partial H}{\\partial x}\n+ v \\frac{\\partial H}{\\partial y}\n\\right).\n\\]"
+  },
+  {
+    "objectID": "posts/enthalpy.html#kinematic-boundary-conditions",
+    "href": "posts/enthalpy.html#kinematic-boundary-conditions",
+    "title": "Deriving the Conservative Enthalpy Equation in Sigma Coordinates",
+    "section": "Kinematic Boundary Conditions",
+    "text": "Kinematic Boundary Conditions\nThe interpretation of \\(\\omega\\) becomes clear when we evaluate it at the upper and lower boundaries.\nIn Cartesian coordinates, the kinematic boundary conditions are:\n\nSurface, with \\(z = h_s = b + H\\):\n\\[\nw_s - \\left(\n\\frac{\\partial h_s}{\\partial t}\n+ u_s \\frac{\\partial h_s}{\\partial x}\n+ v_s \\frac{\\partial h_s}{\\partial y}\n\\right) = -\\dot{a},\n\\]\nwhere \\(\\dot{a}\\) is surface accumulation.\nBed, with \\(z = b\\):\n\\[\nw_b - \\left(\n\\frac{\\partial b}{\\partial t}\n+ u_b \\frac{\\partial b}{\\partial x}\n+ v_b \\frac{\\partial b}{\\partial y}\n\\right) = -\\dot{m},\n\\]\nwhere \\(\\dot{m}\\) is basal melt.\n\n\nAt the Upper Surface\nSet \\(\\sigma = 1\\) in the expression for \\(\\omega\\). Writing \\(H = h_s - b\\), all bed terms cancel and we obtain\n\\[\n\\omega_s\n= w_s - \\left(\n\\frac{\\partial h_s}{\\partial t}\n+ u_s \\frac{\\partial h_s}{\\partial x}\n+ v_s \\frac{\\partial h_s}{\\partial y}\n\\right).\n\\]\nThis is exactly the Cartesian surface kinematic boundary condition, so\n\\[\n\\omega_s = -\\dot{a}.\n\\]\n\n\nAt the Bed\nSet \\(\\sigma = 0\\) in the same expression. The grid-stretching term disappears, leaving\n\\[\n\\omega_b\n= w_b - \\left(\n\\frac{\\partial b}{\\partial t}\n+ u_b \\frac{\\partial b}{\\partial x}\n+ v_b \\frac{\\partial b}{\\partial y}\n\\right).\n\\]\nThis matches the Cartesian basal condition, so\n\\[\n\\omega_b = -\\dot{m}.\n\\]"
+  },
+  {
+    "objectID": "posts/enthalpy.html#deriving-the-conservative-form",
+    "href": "posts/enthalpy.html#deriving-the-conservative-form",
+    "title": "Deriving the Conservative Enthalpy Equation in Sigma Coordinates",
+    "section": "Deriving the Conservative Form",
+    "text": "Deriving the Conservative Form\nNow combine the enthalpy equation with the sigma-space continuity equation.\n\nStep 1\nMultiply the advective enthalpy equation by \\(H\\). Since \\(H\\dot{\\sigma} = \\omega\\), this gives\n\\[\nH \\frac{\\partial E}{\\partial t}\n+ Hu \\frac{\\partial E}{\\partial x}\n+ Hv \\frac{\\partial E}{\\partial y}\n+ \\omega \\frac{\\partial E}{\\partial \\sigma}\n= HS.\n\\]\n\n\nStep 2\nMultiply the sigma-space continuity equation by \\(E\\):\n\\[\nE \\frac{\\partial H}{\\partial t}\n+ E \\frac{\\partial (Hu)}{\\partial x}\n+ E \\frac{\\partial (Hv)}{\\partial y}\n+ E \\frac{\\partial \\omega}{\\partial \\sigma}\n= 0.\n\\]\n\n\nStep 3\nAdd the two equations. Using the product rule in reverse,\n\n\\(H \\frac{\\partial E}{\\partial t} + E \\frac{\\partial H}{\\partial t} = \\frac{\\partial (HE)}{\\partial t}\\)\n\\(Hu \\frac{\\partial E}{\\partial x} + E \\frac{\\partial (Hu)}{\\partial x} = \\frac{\\partial (HEu)}{\\partial x}\\)\n\\(Hv \\frac{\\partial E}{\\partial y} + E \\frac{\\partial (Hv)}{\\partial y} = \\frac{\\partial (HEv)}{\\partial y}\\)\n\\(\\omega \\frac{\\partial E}{\\partial \\sigma} + E \\frac{\\partial \\omega}{\\partial \\sigma} = \\frac{\\partial (E\\omega)}{\\partial \\sigma}\\)\n\nSo the strong conservative form is\n\\[\n\\frac{\\partial (HE)}{\\partial t}\n+ \\frac{\\partial (HEu)}{\\partial x}\n+ \\frac{\\partial (HEv)}{\\partial y}\n+ \\frac{\\partial (E\\omega)}{\\partial \\sigma}\n= HS.\n\\]"
+  },
+  {
+    "objectID": "posts/enthalpy.html#thermodynamic-boundary-conditions-in-conservative-form",
+    "href": "posts/enthalpy.html#thermodynamic-boundary-conditions-in-conservative-form",
+    "title": "Deriving the Conservative Enthalpy Equation in Sigma Coordinates",
+    "section": "Thermodynamic Boundary Conditions in Conservative Form",
+    "text": "Thermodynamic Boundary Conditions in Conservative Form\nThe physical boundary conditions do not change, but their numerical interpretation does. Once the prognostic variable becomes \\(HE\\), the solver must apply boundary conditions in terms of total energy flux rather than pointwise values of specific enthalpy.\n\nUpper Surface\nIn the advective formulation, the upper boundary is usually a Dirichlet condition:\n\\[\nE(\\sigma = 1) = E_{\\text{surface}}.\n\\]\nIn the conservative formulation, the finite-volume solver instead needs the energy flux through the upper face. Using \\(\\omega_s = -\\dot{a}\\),\n\\[\n\\text{Flux}_{\\text{surface}}\n= E_{\\text{surface}} \\omega_s\n= -E_{\\text{surface}} \\dot{a}.\n\\]\nSo accumulation injects both mass and enthalpy consistently into the top control volume.\n\n\nLower Bed\nIn the advective formulation, the bed is typically imposed through a Neumann condition:\n\\[\n-\\kappa \\left(\\frac{\\partial E}{\\partial z}\\right)_{z=b}\n= q_{\\text{geo}} + q_{\\text{fric}}.\n\\]\nUsing\n\\[\n\\frac{\\partial E}{\\partial z} = \\frac{1}{H} \\frac{\\partial E}{\\partial \\sigma},\n\\]\nthe sigma-space version is\n\\[\n-\\frac{\\kappa}{H}\n\\left(\\frac{\\partial E}{\\partial \\sigma}\\right)_{\\sigma=0}\n= q_{\\text{geo}} + q_{\\text{fric}}.\n\\]\nIn conservative form, the total basal flux combines diffusion and mass loss:\n\nDiffusive contribution: \\(q_{\\text{geo}} + q_{\\text{fric}}\\)\nAdvective contribution from melt: \\(E_b \\omega_b = -E_b \\dot{m}\\)\n\nTherefore,\n\\[\n\\text{Flux}_{\\text{bed}}\n= -E_b \\dot{m} + q_{\\text{geo}} + q_{\\text{fric}}.\n\\]\nIf basal melting occurs, the corresponding enthalpy leaves the system in the same step as the mass loss, preserving global energy conservation."
+  },
+  {
+    "objectID": "posts/enthalpy.html#numerical-implications",
+    "href": "posts/enthalpy.html#numerical-implications",
+    "title": "Deriving the Conservative Enthalpy Equation in Sigma Coordinates",
+    "section": "Numerical Implications",
+    "text": "Numerical Implications\nFor a finite-volume implementation, this formulation gives a few immediate benefits:\n\nInternal fluxes telescope exactly, so flux leaving one cell is the same flux entering its neighbor.\nThe evolving cell thickness \\(H\\) is tied directly to the transported quantity, which improves consistency on a deforming mesh.\nIn the limit \\(u = v = \\omega = 0\\), the equation reduces to\n\\[\n\\frac{\\partial (HE)}{\\partial t} = 0,\n\\]\nso column energy is conserved even as the control volume changes.\n\n\n\n\n\n\n\nTakeaway\n\n\n\nIf the mesh thickness evolves, a solver that advances \\(E\\) alone is not strictly conservative. Advancing \\(HE\\) instead makes the thermodynamics compatible with finite-volume mass conservation and yields boundary conditions that are naturally expressed as energy fluxes."
   },
   {
     "objectID": "posts/index.html",
     "href": "posts/index.html",
     "title": "Writing",
     "section": "",
-    "text": "Short posts, course notes, and guides.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome\n\n\n\nportfolio\n\nteaching\n\n\n\n\n\n\n\n\n\nJan 9, 2026\n\n\n\n\n\nNo matching items"
+    "text": "Short posts, course notes, and guides.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeriving the Conservative Enthalpy Equation in Sigma Coordinates\n\n\n\n\n\n\nglaciology\n\n\nnumerical methods\n\n\nfinite volume\n\n\n\nA derivation of the conservative enthalpy equation in sigma coordinates, with attention to continuity, boundary conditions, and finite-volume implementation.\n\n\n\n\n\nApr 8, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome\n\n\n\n\n\n\nportfolio\n\n\nteaching\n\n\n\n\n\n\n\n\n\nJan 9, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -35,39 +147,18 @@
     "text": "Antelope near Heart Mountain, Wyoming.\n\n\nWelcome! I am Jacob Downs, an assistant professor in the computer science department at the University of Montana. Inspired by the beauty of the natural world, my research aims to improve out understanding of physical processes through numerical, statistical, and machine-learning based models.\nThis site hosts:\n\nProjects (open-source + demos)\nTeaching materials (course notes, labs)\nWriting (short posts & guides)\n\n\n\n\n\n\n\nNote\n\n\n\nIf you’re looking for my Cloud Computing course materials, see:\nCloud Computing Course Site"
   },
   {
-    "objectID": "index.html#hi",
-    "href": "index.html#hi",
-    "title": "Jacob Downs",
-    "section": "",
-    "text": "I’m Alex Doe, a faculty member interested in cloud computing, developer tooling, and teaching practical systems skills.\nThis site hosts:\n\nProjects (open-source + demos)\nTeaching materials (course notes, labs)\nWriting (short posts & guides)\n\n\n\n\n\n\n\nNote\n\n\n\nIf you’re looking for my Cloud Computing course materials, see:\nCloud Computing Course Site"
-  },
-  {
-    "objectID": "index.html#highlights",
-    "href": "index.html#highlights",
-    "title": "Jacob Downs",
-    "section": "Highlights",
-    "text": "Highlights\n\n\n\nCurrent focus\n\nCloud computing education\nDevOps & automation\nSecure-by-default architectures\n\n\n\n\nQuick links\n\nResearch\nTeaching\nWriting\nAbout"
-  },
-  {
-    "objectID": "index.html#selected-publications-example",
-    "href": "index.html#selected-publications-example",
-    "title": "Jacob Downs",
-    "section": "Selected publications (example)",
-    "text": "Selected publications (example)\n\nDoe, A. A Practical View of Cloud Pedagogy. (2025). [1]"
-  },
-  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "I’m Jacob Downs, a Montana boy who grew into a certified nerd. Here’s a juble of professional as well as personal interests."
+    "text": "I’m Jacob Downs, a Montana kid who grew into a certified nerd. Here’s a juble of professional as well as personal interests."
   },
   {
-    "objectID": "about.html#bio-placeholder",
-    "href": "about.html#bio-placeholder",
+    "objectID": "about.html#bio",
+    "href": "about.html#bio",
     "title": "About",
     "section": "",
-    "text": "I’m Jacob Downs, a Montana boy who grew into a certified nerd. Here’s a juble of professional as well as personal interests."
+    "text": "I’m Jacob Downs, a Montana kid who grew into a certified nerd. Here’s a juble of professional as well as personal interests."
   },
   {
     "objectID": "about.html#interests",
@@ -82,103 +173,5 @@
     "title": "About",
     "section": "Contact",
     "text": "Contact\n\nEmail: jacob.downs@umt.edu\nGitHub: https://github.com/JacobDowns/"
-  },
-  {
-    "objectID": "posts/2026-01-09-welcome.html",
-    "href": "posts/2026-01-09-welcome.html",
-    "title": "Welcome",
-    "section": "",
-    "text": "This is a placeholder post. I’ll use this space for:"
-  },
-  {
-    "objectID": "posts/2026-01-09-welcome.html#a-citation-example",
-    "href": "posts/2026-01-09-welcome.html#a-citation-example",
-    "title": "Welcome",
-    "section": "A citation example",
-    "text": "A citation example\nThe NIST definition is a common starting point for cloud computing [1]."
-  },
-  {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "Projects",
-    "section": "",
-    "text": "What: Course notes, labs, and resources\nTech: Quarto, GitHub Pages\nLink: https://your-username.github.io/cloud-computing/\n\n\n\n\n\nWhat: Retro UI design system for course content\nTech: CSS + Quarto callouts\n\n\n\n\n\nWhat: A small lab showing reproducible infrastructure patterns\nConcepts: state, plan/apply, drift, review\n\n\n\n\n\n\n\nTip\n\n\n\nLater, you can add screenshots or embed short GIFs of demos here."
-  },
-  {
-    "objectID": "projects.html#selected-projects",
-    "href": "projects.html#selected-projects",
-    "title": "Projects",
-    "section": "",
-    "text": "What: Course notes, labs, and resources\nTech: Quarto, GitHub Pages\nLink: https://your-username.github.io/cloud-computing/\n\n\n\n\n\nWhat: Retro UI design system for course content\nTech: CSS + Quarto callouts\n\n\n\n\n\nWhat: A small lab showing reproducible infrastructure patterns\nConcepts: state, plan/apply, drift, review\n\n\n\n\n\n\n\nTip\n\n\n\nLater, you can add screenshots or embed short GIFs of demos here."
-  },
-  {
-    "objectID": "teaching.html#spring-2026",
-    "href": "teaching.html#spring-2026",
-    "title": "Teaching",
-    "section": "Spring 2026",
-    "text": "Spring 2026\n\nCSCI 391 Cloud Computing (Undergraduate)\n\nCloud fundamentals, PaaS, DevOps workflows, security, and intro cloud ML\nMaterials: https://your-username.github.io/cloud-computing/"
-  },
-  {
-    "objectID": "teaching.html#fall-2025",
-    "href": "teaching.html#fall-2025",
-    "title": "Teaching",
-    "section": "Fall 2025",
-    "text": "Fall 2025\n\nCSCI 491 / 591: High Performance Computing\n\n\nCSCI 340: Database Design"
-  },
-  {
-    "objectID": "about.html#bio",
-    "href": "about.html#bio",
-    "title": "About",
-    "section": "",
-    "text": "I’m Jacob Downs, a Montana boy who grew into a certified nerd. Here’s a juble of professional as well as personal interests."
-  },
-  {
-    "objectID": "projects.html#research",
-    "href": "projects.html#research",
-    "title": "Research",
-    "section": "",
-    "text": "My research focuses on using numerical models and machine learning methods to better understand physical processes. Much of my work has focused on glaciology, particularly looking at how glaciers and ice sheets respond to changes in climate."
-  },
-  {
-    "objectID": "projects.html#publications",
-    "href": "projects.html#publications",
-    "title": "Research",
-    "section": "Publications",
-    "text": "Publications"
-  },
-  {
-    "objectID": "research.html",
-    "href": "research.html",
-    "title": "Research",
-    "section": "",
-    "text": "My research focuses on using numerical models and machine learning methods to better understand complex physical processes like how glaciers flow or fires spread over the landscape. Much of my work has focused on glaciology, particularly looking at how glaciers and ice sheets respond to changes in climate.\n\nSelected publications\n\n\n[1] L. Zeller, D. McGrath, L. Sass, C. Florentine, and J. Downs, “Equilibrium line altitudes, accumulation areas and the vulnerability of glaciers in alaska,” Journal of Glaciology, vol. 71, p. e28, Jan. 2025, doi: 10.1017/jog.2024.65.\n\n\n[2] A. A. Marcozzi, J. V. Johnson, R. A. Parsons, S. J. Flanary, C. A. Seielstad, and J. Z. Downs, “Application of LiDAR derived fuel cells to wildfire modeling at laboratory scale,” Fire, vol. 6, no. 10, p. 394, Oct. 2023, doi: 10.3390/fire6100394.\n\n\n[3] J. Downs and J. V. Johnson, “A rapidly retreating, marine-terminating glacier’s modeled response to perturbations in basal traction,” Journal of Glaciology, vol. 68, no. 271, pp. 891–900, Oct. 2022, doi: 10.1017/jog.2022.5.\n\n\n[4] J. P. Briner et al., “Rate of mass loss from the greenland ice sheet will exceed holocene values this century,” Nature, vol. 586, no. 7827, pp. 70–74, Oct. 2020, doi: 10.1038/s41586-020-2742-6.\n\n\n[5] J. Z. Downs, J. V. Johnson, J. T. Harper, T. Meierbachtol, and M. A. Werder, “Dynamic hydraulic conductivity reconciles mismatch between modeled and observed winter subglacial water pressure,” Journal of Geophysical Research: Earth Surface, vol. 123, no. 4, pp. 818–836, 2018, doi: 10.1002/2017JF004522.\n\n\n[6] B. D. Fleurian et al., “SHMIP the subglacial hydrology model intercomparison project,” Journal of Glaciology, vol. 64, no. 248, pp. 897–916, Dec. 2018, doi: 10.1017/jog.2018.78.\n\n\n[7] J. Downs, D. Brinkerhoff, and M. Morlighem, “Inferring time-dependent calving dynamics at helheim glacier,” Journal of Glaciology, vol. 69, no. 274, pp. 381–396, Apr. 2023, doi: 10.1017/jog.2022.68.\n\n\n[8] J. Downs, J. Johnson, J. Briner, N. Young, A. Lesnek, and J. Cuzzone, “Western greenland ice sheet retreat history reveals elevated precipitation during the holocene thermal maximum,” The Cryosphere, vol. 14, no. 3, pp. 1121–1137, Mar. 2020, doi: 10.5194/tc-14-1121-2020."
-  },
-  {
-    "objectID": "research.html#research",
-    "href": "research.html#research",
-    "title": "Research",
-    "section": "",
-    "text": "My research focuses on using numerical models and machine learning methods to better understand physical processes. Much of my work has focused on glaciology, particularly looking at how glaciers and ice sheets respond to changes in climate."
-  },
-  {
-    "objectID": "research.html#publications",
-    "href": "research.html#publications",
-    "title": "Research",
-    "section": "Publications",
-    "text": "Publications\n\nSelected publications\n\n\n[1] L. Zeller, D. McGrath, L. Sass, C. Florentine, and J. Downs, “Equilibrium line altitudes, accumulation areas and the vulnerability of glaciers in alaska,” Journal of Glaciology, vol. 71, p. e28, Jan. 2025, doi: 10.1017/jog.2024.65.\n\n\n[2] A. A. Marcozzi, J. V. Johnson, R. A. Parsons, S. J. Flanary, C. A. Seielstad, and J. Z. Downs, “Application of LiDAR derived fuel cells to wildfire modeling at laboratory scale,” Fire, vol. 6, no. 10, p. 394, Oct. 2023, doi: 10.3390/fire6100394."
-  },
-  {
-    "objectID": "research.html#selected-publications-example",
-    "href": "research.html#selected-publications-example",
-    "title": "Research",
-    "section": "Selected publications (example)",
-    "text": "Selected publications (example)\n[1]"
-  },
-  {
-    "objectID": "research.html#selected-publications",
-    "href": "research.html#selected-publications",
-    "title": "Research",
-    "section": "Selected publications",
-    "text": "Selected publications\nEquilibirum line alti[1]"
   }
 ]
